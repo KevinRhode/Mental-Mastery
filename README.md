@@ -7,7 +7,13 @@ MVP:
 
 User Logs In/Out
 Create a Family (component) 
-Select a Member (component) 
+Select a Member (component)
+Task (component)
+2 types: personal, family 
+Dashboard - (
+    shows tasks,
+    can select a member to view, can create a task
+    )
 
 each family member's info (build upon)
 (when storing family PII bcrypt maybe)
