@@ -18,13 +18,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 5,
-  },
-  thoughts: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Thought',
-    },
-  ],
+  },  
 });
 
 userSchema.pre('save', async function (next) {

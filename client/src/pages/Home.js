@@ -3,7 +3,8 @@ import { useQuery } from '@apollo/client';
 
 const Home = () => {
   const { loading, data } = useQuery();
-  const thoughts = data?.thoughts || [];
+  // const thoughts = data?.thoughts || [];
+  // example
 
   return (
     <main>
