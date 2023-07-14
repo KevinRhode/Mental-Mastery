@@ -22,7 +22,7 @@ const familyuserSchema = new Schema({
     proNoun: {
 
         type: String,
-        required: true,
+
     },
     religion: {
 
