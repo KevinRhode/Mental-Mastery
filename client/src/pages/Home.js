@@ -11,6 +11,7 @@ const Home = () => {
           className=""
           style={{ }}
         >
+          This is Text
         </div>
       </div>
     </main>

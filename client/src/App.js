@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   ApolloClient,
   InMemoryCache,
@@ -40,13 +40,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
-            
-          </div>
-          <Footer />
-        </div>
+       <Header/>
+       <Footer/>
       </Router>
     </ApolloProvider>
   );
