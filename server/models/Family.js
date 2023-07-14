@@ -1,13 +1,14 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const userSchema = new Schema({
+const familySchema = new Schema({
   username: {
     type: String,
     required: true,
     unique: true,
     trim: true,
   },
+
   email: {
     type: String,
     required: true,
@@ -18,10 +19,22 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 5,
-  },  
+  },
+
+  image: {
+
+    type: String,
+
+  },
+
+  familyId: [familyuserId],
+
+  savedtask: [taskSchema],
+
+
 });
 
-userSchema.pre('save', async function (next) {
+familySchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
@@ -30,10 +43,10 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-userSchema.methods.isCorrectPassword = async function (password) {
+familySchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const User = model('User', userSchema);
+const Family = model('Family', familySchema);
 
-module.exports = User;
+module.exports = Family;
