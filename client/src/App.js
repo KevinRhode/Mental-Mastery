@@ -9,6 +9,7 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
+import Family from './components/Family';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -39,9 +40,13 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
-       <Header/>
-       <Footer/>
+      <Router>       
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path='/family' element={<Family/>}/>
+          {/* catch all for missed end points */}
+          <Route render={() => <h1 className="display-2">Wrong page!</h1>}/>
+        </Routes>      
       </Router>
     </ApolloProvider>
   );
