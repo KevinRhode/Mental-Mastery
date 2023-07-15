@@ -55,6 +55,7 @@ const resolvers = {
         {...taskToUpdate},
         {new:true}
       )
+      return updatedTask;
       // if (context.user) {
         
       // }
@@ -66,9 +67,12 @@ const resolvers = {
         {...familyUserToUpdate},
         {new:true}
       )
+      return updatedFamilyUser;
     },
     // deleteFamily: async (parent, { username, email }) => {},
-    deleteTask: async (parent, { username, email }) => {},
+    deleteTask: async (parent, { _id }) => {
+
+    },
     deleteFamilyUser: async (parent, { username, email }) => {},
     // createFamily(username: String!, email: String!, password: String!, image: String): Family
     // createTask(taskname: String!, location: String!, taskId: String!): Task
