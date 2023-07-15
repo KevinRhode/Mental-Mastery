@@ -36,25 +36,6 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-<<<<<<< HEAD
-    createTask: async (parent, { taskname, location },context) => {},
-    createFamilyUser: async (parent, { familyuserId, birthDay,proNoun,religion },context) => {},
-    // updateFamily: async (parent, { username, email }) => {},
-    updateTask: async (parent, { taskToUpdate },context) => {},
-    updateFamilyUser: async (parent, { familyUserToUpdate },context) => {},
-    // deleteFamily: async (parent, { username, email }) => {},
-    deleteTask: async (parent, { username, email }) => {},
-    deleteFamilyUser: async (parent, { username, email }) => {},
-    // createFamily(username: String!, email: String!, password: String!, image: String): Family
-    // createTask(taskname: String!, location: String!, taskId: String!): Task
-    // createFamilyUser(familyuserId: String!, birthDay: String!, proNoun: String, religion: String): FamilyUser
-    // updateFamily(id: ID!, username: String, email: String, password: String, image: String): Family
-    // updateTask(id: ID!, taskname: String, location: String, Date: String, taskId: String): Task
-    // updateFamilyUser(id: ID!, familyuserId: String, birthDay: String, proNoun: String, religion: String): FamilyUser
-    // deleteFamily(id: ID!): Family
-    // deleteTask(id: ID!): Task
-    // deleteFamilyUser(id: ID!): FamilyUser
-=======
     createTask: async (parent, { taskname, location },context) => {
       const task =await Task.create({taskname,location});
       return task;
@@ -95,7 +76,6 @@ const resolvers = {
     deleteFamilyUser: async (parent, { username, email }) => {
       //will add filter with auth is implemented
     },   
->>>>>>> feature/graphqlresolvers
   },
 };
 

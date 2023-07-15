@@ -26,20 +26,6 @@ const familySchema = new Schema({
   image: {
     type: String,
   },
-<<<<<<< HEAD
-  familyUserId: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "FamilyUser",
-    },
-  ], 
-  savedtasks: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Task",
-    },
-  ],
-=======
 
   familyuserIds: [{
     type: String,
@@ -50,7 +36,6 @@ const familySchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Task"
   }],
->>>>>>> feature/graphqlresolvers
 });
 
 familySchema.pre("save", async function (next) {
