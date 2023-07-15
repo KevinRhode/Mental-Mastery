@@ -27,28 +27,10 @@ const familySchema = new Schema({
     type: String,
   },
 
-<<<<<<< HEAD
   familyuserIds: [{
     type: String,
     ref:"FamilyUser"
   }],
-=======
-  //  familyId: [familyuserId],
-
-  // savedtask: [taskSchema],
-  familyId: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'FamilyUser',
-    },
-  ],
-  savedtask: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Task',
-    },
-  ],
->>>>>>> main
 
   savedtasks: [{
     type: Schema.Types.ObjectId,
