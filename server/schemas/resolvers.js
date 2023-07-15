@@ -41,7 +41,12 @@ const resolvers = {
       return task;
     },
     createFamilyUser: async (parent, { familyuserId, birthDay,proNoun,religion },context) => {
-
+      const familyUser = await FamilyUser.create({familyuserId,birthDay, proNoun,religion})
+      return familyUser;
+      // if (context.user) {
+        
+      // }
+      // throw new AuthenticationError("You need to be logged in!");
     },
     // updateFamily: async (parent, { username, email }) => {},
     updateTask: async (parent, { taskToUpdate },context) => {
