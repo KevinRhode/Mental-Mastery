@@ -20,10 +20,7 @@ const taskSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  taskId: {
-    type: String,
-    required: true,
-  },
+  
 });
 
 const Task = model("Task", taskSchema);

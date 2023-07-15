@@ -1,9 +1,9 @@
 
 const Family = require('./Family');
 
-const Task = required('./Task');
+const Task = require('./Task');
 
-const FamilyUser = required('./FamilyUser');
+const FamilyUser = require('./FamilyUser');
 
 
 module.exports = { Family, Task, FamilyUser };

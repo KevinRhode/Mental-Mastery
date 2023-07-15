@@ -10,8 +10,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Family from './components/Family';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Tasks from './components/Tasks'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -44,8 +45,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path='/family' element={<Family/>}/>
-          {/* catch all for missed end points */}
-          <Route render={() => <h1 className="display-2">Wrong page!</h1>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/signup' element={<Signup/>}/>
+          <Route path='/task' element={<Tasks/>}/>
         </Routes>      
       </Router>
     </ApolloProvider>
