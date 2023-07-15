@@ -36,11 +36,20 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    createTask: async (parent, { taskname, location },context) => {},
-    createFamilyUser: async (parent, { familyuserId, birthDay,proNoun,religion },context) => {},
+    createTask: async (parent, { taskname, location },context) => {
+      const task =await Task.create({taskname,location});
+      return task;
+    },
+    createFamilyUser: async (parent, { familyuserId, birthDay,proNoun,religion },context) => {
+
+    },
     // updateFamily: async (parent, { username, email }) => {},
-    updateTask: async (parent, { taskToUpdate },context) => {},
-    updateFamilyUser: async (parent, { familyUserToUpdate },context) => {},
+    updateTask: async (parent, { taskToUpdate },context) => {
+
+    },
+    updateFamilyUser: async (parent, { familyUserToUpdate },context) => {
+
+    },
     // deleteFamily: async (parent, { username, email }) => {},
     deleteTask: async (parent, { username, email }) => {},
     deleteFamilyUser: async (parent, { username, email }) => {},
