@@ -50,7 +50,15 @@ const resolvers = {
     },
     // updateFamily: async (parent, { username, email }) => {},
     updateTask: async (parent, { taskToUpdate },context) => {
-
+      const updatedTask = await Task.findByIdAndUpdate(
+        {_id: taskToUpdate._id},
+        {...taskToUpdate},
+        {new:true}
+      )
+      // if (context.user) {
+        
+      // }
+      // throw new AuthenticationError("You need to be logged in!");
     },
     updateFamilyUser: async (parent, { familyUserToUpdate },context) => {
 
