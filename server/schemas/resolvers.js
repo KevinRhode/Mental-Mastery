@@ -36,6 +36,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+<<<<<<< HEAD
     createTask: async (parent, { taskname, location },context) => {},
     createFamilyUser: async (parent, { familyuserId, birthDay,proNoun,religion },context) => {},
     // updateFamily: async (parent, { username, email }) => {},
@@ -53,6 +54,48 @@ const resolvers = {
     // deleteFamily(id: ID!): Family
     // deleteTask(id: ID!): Task
     // deleteFamilyUser(id: ID!): FamilyUser
+=======
+    createTask: async (parent, { taskname, location },context) => {
+      const task =await Task.create({taskname,location});
+      return task;
+    },
+    createFamilyUser: async (parent, { familyuserId, birthDay,proNoun,religion },context) => {
+      const familyUser = await FamilyUser.create({familyuserId,birthDay, proNoun,religion})
+      return familyUser;
+      // if (context.user) {
+        
+      // }
+      // throw new AuthenticationError("You need to be logged in!");
+    },
+    // updateFamily: async (parent, { username, email }) => {},
+    updateTask: async (parent, { taskToUpdate },context) => {
+      const updatedTask = await Task.findByIdAndUpdate(
+        {_id: taskToUpdate._id},
+        {...taskToUpdate},
+        {new:true}
+      )
+      return updatedTask;
+      // if (context.user) {
+        
+      // }
+      // throw new AuthenticationError("You need to be logged in!");
+    },
+    updateFamilyUser: async (parent, { familyUserToUpdate },context) => {
+      const updatedFamilyUser = await FamilyUser.findByIdAndUpdate(
+        {_id},
+        {...familyUserToUpdate},
+        {new:true}
+      )
+      return updatedFamilyUser;
+    },
+    // deleteFamily: async (parent, { username, email }) => {},
+    deleteTask: async (parent, { _id }) => {
+      //will add filter with auth is implemented
+    },
+    deleteFamilyUser: async (parent, { username, email }) => {
+      //will add filter with auth is implemented
+    },   
+>>>>>>> feature/graphqlresolvers
   },
 };
 
