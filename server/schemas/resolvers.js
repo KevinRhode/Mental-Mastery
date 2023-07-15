@@ -1,45 +1,58 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
+const { Family, Task, FamilyUser } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
-  Query: {   
+  Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return Family.findOne({ _id: context.user._id });
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
 
-  Mutation: {  
-    addFamily: async (parent, {personsName, DOB}) => {
-
-    }, 
-    addTaskToFamily:async (parent, {personsName, DOB}) => {
-
-    },
+  Mutation: {
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+      const user = await Family.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError("No user found with this email address");
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
 
       const token = signToken(user);
 
       return { token, user };
-    }, 
-    addFamilyUser: async (parent, {personsName, DOB}) => {
-
     },
-
+    
+    register: async (parent, { username, email, password }) => {
+      const user = await Family.create({ username, email, password });
+      const token = signToken(user);
+      return { token, user };
+    },
+    createTask: async (parent, { taskname, location },context) => {},
+    createFamilyUser: async (parent, { familyuserId, birthDay,proNoun,religion },context) => {},
+    // updateFamily: async (parent, { username, email }) => {},
+    updateTask: async (parent, { taskToUpdate },context) => {},
+    updateFamilyUser: async (parent, { familyUserToUpdate },context) => {},
+    // deleteFamily: async (parent, { username, email }) => {},
+    deleteTask: async (parent, { username, email }) => {},
+    deleteFamilyUser: async (parent, { username, email }) => {},
+    // createFamily(username: String!, email: String!, password: String!, image: String): Family
+    // createTask(taskname: String!, location: String!, taskId: String!): Task
+    // createFamilyUser(familyuserId: String!, birthDay: String!, proNoun: String, religion: String): FamilyUser
+    // updateFamily(id: ID!, username: String, email: String, password: String, image: String): Family
+    // updateTask(id: ID!, taskname: String, location: String, Date: String, taskId: String): Task
+    // updateFamilyUser(id: ID!, familyuserId: String, birthDay: String, proNoun: String, religion: String): FamilyUser
+    // deleteFamily(id: ID!): Family
+    // deleteTask(id: ID!): Task
+    // deleteFamilyUser(id: ID!): FamilyUser
   },
 };
 
