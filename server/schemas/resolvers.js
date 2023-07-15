@@ -1,45 +1,81 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
+const { Family, Task, FamilyUser } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
-  Query: {   
+  Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return Family.findOne({ _id: context.user._id });
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
 
-  Mutation: {  
-    addFamily: async (parent, {personsName, DOB}) => {
-
-    }, 
-    addTaskToFamily:async (parent, {personsName, DOB}) => {
-
-    },
+  Mutation: {
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+      const user = await Family.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError("No user found with this email address");
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
 
       const token = signToken(user);
 
       return { token, user };
-    }, 
-    addFamilyUser: async (parent, {personsName, DOB}) => {
-
     },
-
+    
+    register: async (parent, { username, email, password }) => {
+      const user = await Family.create({ username, email, password });
+      const token = signToken(user);
+      return { token, user };
+    },
+    createTask: async (parent, { taskname, location },context) => {
+      const task =await Task.create({taskname,location});
+      return task;
+    },
+    createFamilyUser: async (parent, { familyuserId, birthDay,proNoun,religion },context) => {
+      const familyUser = await FamilyUser.create({familyuserId,birthDay, proNoun,religion})
+      return familyUser;
+      // if (context.user) {
+        
+      // }
+      // throw new AuthenticationError("You need to be logged in!");
+    },
+    // updateFamily: async (parent, { username, email }) => {},
+    updateTask: async (parent, { taskToUpdate },context) => {
+      const updatedTask = await Task.findByIdAndUpdate(
+        {_id: taskToUpdate._id},
+        {...taskToUpdate},
+        {new:true}
+      )
+      return updatedTask;
+      // if (context.user) {
+        
+      // }
+      // throw new AuthenticationError("You need to be logged in!");
+    },
+    updateFamilyUser: async (parent, { familyUserToUpdate },context) => {
+      const updatedFamilyUser = await FamilyUser.findByIdAndUpdate(
+        {_id},
+        {...familyUserToUpdate},
+        {new:true}
+      )
+      return updatedFamilyUser;
+    },
+    // deleteFamily: async (parent, { username, email }) => {},
+    deleteTask: async (parent, { _id }) => {
+      //will add filter with auth is implemented
+    },
+    deleteFamilyUser: async (parent, { username, email }) => {
+      //will add filter with auth is implemented
+    },   
   },
 };
 
