@@ -8,15 +8,15 @@ const typeDefs = gql`
     email: String!
     password: String!
     image: String
-    familyId: [FamilyUser!]!
-    savedtask: [Task]
+    familyUserIds: [FamilyUser!]!
+    savedTasks: [Task]
   }
 
   type Task {
     _id: ID!
     taskname: String!
     location: String!
-    Date: String
+    date: String
   }
 
   type FamilyUser {
@@ -37,7 +37,7 @@ const typeDefs = gql`
     createTask(taskname: String!, location: String!): Task
     createFamilyUser(familyuserId: String!, birthDay: String!, proNoun: String, religion: String): FamilyUser
    
-    updateTask(id: ID!, taskname: String, location: String, Date: String, taskId: String): Task
+    updateTask(taskId:ID,taskname: String, location: String, date: String): Task
     updateFamilyUser(id: ID!, familyuserId: String, birthDay: String, proNoun: String, religion: String): FamilyUser
    
     deleteTask(id: ID!): Task

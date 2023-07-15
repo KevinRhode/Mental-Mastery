@@ -49,10 +49,10 @@ const resolvers = {
       // throw new AuthenticationError("You need to be logged in!");
     },
     // updateFamily: async (parent, { username, email }) => {},
-    updateTask: async (parent, { taskToUpdate },context) => {
+    updateTask: async (parent, { taskId,taskname,location,date },context) => {
       const updatedTask = await Task.findByIdAndUpdate(
-        {_id: taskToUpdate._id},
-        {...taskToUpdate},
+        {_id: taskId},
+        {taskId,taskname,location,date },
         {new:true}
       )
       return updatedTask;

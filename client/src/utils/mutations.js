@@ -28,7 +28,7 @@ export const CREATE_TASK = gql`
 mutation CreateTask($taskname: String!, $location: String!) {
   createTask(taskname: $taskname, location: $location) {
     _id
-    Date
+    date
     location
     taskname
   }
