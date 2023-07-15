@@ -71,18 +71,11 @@ const resolvers = {
     },
     // deleteFamily: async (parent, { username, email }) => {},
     deleteTask: async (parent, { _id }) => {
-
+      //will add filter with auth is implemented
     },
-    deleteFamilyUser: async (parent, { username, email }) => {},
-    // createFamily(username: String!, email: String!, password: String!, image: String): Family
-    // createTask(taskname: String!, location: String!, taskId: String!): Task
-    // createFamilyUser(familyuserId: String!, birthDay: String!, proNoun: String, religion: String): FamilyUser
-    // updateFamily(id: ID!, username: String, email: String, password: String, image: String): Family
-    // updateTask(id: ID!, taskname: String, location: String, Date: String, taskId: String): Task
-    // updateFamilyUser(id: ID!, familyuserId: String, birthDay: String, proNoun: String, religion: String): FamilyUser
-    // deleteFamily(id: ID!): Family
-    // deleteTask(id: ID!): Task
-    // deleteFamilyUser(id: ID!): FamilyUser
+    deleteFamilyUser: async (parent, { username, email }) => {
+      //will add filter with auth is implemented
+    },   
   },
 };
 
