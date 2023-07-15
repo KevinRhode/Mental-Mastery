@@ -61,7 +61,11 @@ const resolvers = {
       // throw new AuthenticationError("You need to be logged in!");
     },
     updateFamilyUser: async (parent, { familyUserToUpdate },context) => {
-
+      const updatedFamilyUser = await FamilyUser.findByIdAndUpdate(
+        {_id},
+        {...familyUserToUpdate},
+        {new:true}
+      )
     },
     // deleteFamily: async (parent, { username, email }) => {},
     deleteTask: async (parent, { username, email }) => {},
