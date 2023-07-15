@@ -26,34 +26,18 @@ const familySchema = new Schema({
   image: {
     type: String,
   },
-
-<<<<<<< HEAD
-  familyuserIds: [{
-    type: String,
-    ref:"FamilyUser"
-  }],
-=======
-  //  familyId: [familyuserId],
-
-  // savedtask: [taskSchema],
-  familyId: [
+  familyUserId: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'FamilyUser',
+      ref: "FamilyUser",
     },
-  ],
-  savedtask: [
+  ], 
+  savedtasks: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Task',
+      ref: "Task",
     },
   ],
->>>>>>> main
-
-  savedtasks: [{
-    type: Schema.Types.ObjectId,
-    ref: "Task"
-  }],
 });
 
 familySchema.pre("save", async function (next) {
