@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   ApolloClient,
   InMemoryCache,
@@ -9,8 +9,10 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Family from './components/Family';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Tasks from './components/Tasks'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -39,14 +41,14 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
-            
-          </div>
-          <Footer />
-        </div>
+      <Router>       
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path='/family' element={<Family/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/signup' element={<Signup/>}/>
+          <Route path='/task' element={<Tasks/>}/>
+        </Routes>      
       </Router>
     </ApolloProvider>
   );

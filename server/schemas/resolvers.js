@@ -12,7 +12,13 @@ const resolvers = {
     },
   },
 
-  Mutation: {    
+  Mutation: {  
+    addFamily: async (parent, {personsName, DOB}) => {
+
+    }, 
+    addTaskToFamily:async (parent, {personsName, DOB}) => {
+
+    },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -29,7 +35,11 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    },             
+    }, 
+    addFamilyUser: async (parent, {personsName, DOB}) => {
+
+    },
+
   },
 };
 
