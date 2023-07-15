@@ -35,3 +35,13 @@ mutation CreateTask($taskname: String!, $location: String!) {
 }
 `;
 
+export const UPDATE_TASK = gql`
+mutation UpdateTask($taskId: ID, $taskname: String, $location: String, $date: String) {
+  updateTask(taskId: $taskId, taskname: $taskname, location: $location, date: $date) {
+    _id
+    date
+    location
+    taskname
+  }
+}
+`;
