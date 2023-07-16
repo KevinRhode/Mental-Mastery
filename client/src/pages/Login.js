@@ -30,40 +30,62 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
+    <div
+      className="container my-1"
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+        padding: '20px',
+        boxSizing: 'border-box',
+      }}
+    >
+      <div style={{ maxWidth: '400px', width: '100%' }}>
+        <Link to="/signup" style={{ display: 'block', marginBottom: '10px', textAlign: 'center' }}>
+          ← Go to Signup
+        </Link>
 
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email address:</label>
-          <input
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
-          <input
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            onChange={handleChange}
-          />
-        </div>
-        {error ? (
-          <div>
-            <p className="error-text">you chose poorly.🧙‍♂️</p>
+        <h2 style={{ textAlign: 'center' }}>Login</h2>
+        <form onSubmit={handleFormSubmit}>
+          <div style={{ marginBottom: '10px' }}>
+            <label htmlFor="email" style={{ display: 'block', marginBottom: '5px' }}>
+              Email address:
+            </label>
+            <input
+              placeholder="youremail@test.com"
+              name="email"
+              type="email"
+              id="email"
+              style={{ width: '100%', padding: '5px' }}
+              onChange={handleChange}
+            />
           </div>
-        ) : null}
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
+          <div style={{ marginBottom: '10px' }}>
+            <label htmlFor="pwd" style={{ display: 'block', marginBottom: '5px' }}>
+              Password:
+            </label>
+            <input
+              placeholder="******"
+              name="password"
+              type="password"
+              id="pwd"
+              style={{ width: '100%', padding: '5px' }}
+              onChange={handleChange}
+            />
+          </div>
+          {error ? (
+            <div>
+              <p className="error-text" style={{ textAlign: 'center' }}>
+                you chose...poorly 🧙‍♂️
+              </p>
+            </div>
+          ) : null}
+          <div style={{ textAlign: 'right' }}>
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
