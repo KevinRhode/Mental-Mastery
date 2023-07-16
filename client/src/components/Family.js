@@ -36,10 +36,10 @@ const FamilyComponent = () => {
             />
           </label>
           <label>
-            Age:
+            Date of Birth:
             <input
-              type="number"
-              name="age"
+              type="date"
+              name="dateOfBirth"
               onChange={(event) => handleCardInputChange(i, event)}
             />
           </label>
