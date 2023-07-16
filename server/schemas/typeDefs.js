@@ -37,7 +37,7 @@ const typeDefs = gql`
     createFamilyUser(birthDay: String!, proNoun: String, religion: String): FamilyUser
    
     updateTask(taskId:ID,taskname: String, location: String, date: String): Task
-    updateFamilyUser(id: ID!, familyuserId: String, birthDay: String, proNoun: String, religion: String): FamilyUser
+    updateFamilyUser(familyUserId:ID, birthDay: String, proNoun: String, religion: String): FamilyUser
    
     deleteTask(id: ID!): Task
     deleteFamilyUser(id: ID!): FamilyUser
