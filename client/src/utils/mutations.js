@@ -45,3 +45,17 @@ mutation UpdateTask($taskId: ID, $taskname: String, $location: String, $date: St
   }
 }
 `;
+
+export const CREATE_FAMILY_USER = gql`
+mutation CreateFamilyUser($birthDay: String!, $proNoun: String, $religion: String) {
+  createFamilyUser(birthDay: $birthDay, proNoun: $proNoun, religion: $religion) {
+    _id    
+    birthDay
+    proNoun
+    religion
+  }
+}
+`;
+export const UPDATE_FAMILY_USER = gql`
+
+`;

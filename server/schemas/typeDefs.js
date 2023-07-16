@@ -20,8 +20,7 @@ const typeDefs = gql`
   }
 
   type FamilyUser {
-    _id: ID!
-    familyuserId: String!
+    _id: ID!    
     birthDay: String!
     proNoun: String
     religion: String
@@ -35,7 +34,7 @@ const typeDefs = gql`
 
   type Mutation {    
     createTask(taskname: String!, location: String!): Task
-    createFamilyUser(familyuserId: String!, birthDay: String!, proNoun: String, religion: String): FamilyUser
+    createFamilyUser(birthDay: String!, proNoun: String, religion: String): FamilyUser
    
     updateTask(taskId:ID,taskname: String, location: String, date: String): Task
     updateFamilyUser(id: ID!, familyuserId: String, birthDay: String, proNoun: String, religion: String): FamilyUser

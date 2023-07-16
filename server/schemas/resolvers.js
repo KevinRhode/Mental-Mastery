@@ -40,8 +40,8 @@ const resolvers = {
       const task =await Task.create({taskname,location});
       return task;
     },
-    createFamilyUser: async (parent, { familyuserId, birthDay,proNoun,religion },context) => {
-      const familyUser = await FamilyUser.create({familyuserId,birthDay, proNoun,religion})
+    createFamilyUser: async (parent, { birthDay,proNoun,religion },context) => {
+      const familyUser = await FamilyUser.create({birthDay, proNoun,religion})
       return familyUser;
       // if (context.user) {
         

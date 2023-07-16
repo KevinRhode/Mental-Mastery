@@ -7,13 +7,6 @@ const { Schema, model } = require('mongoose');
 
 const familyuserSchema = new Schema({
 
-    familyuserId: {
-
-        type: String,
-        required: true,
-
-    },
-
     birthDay: {
 
         type: Date,
