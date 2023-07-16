@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
+import Auth from '../utils/auth';
 import Header from './Header';
 import Footer from './Footer';
+import { useMutation } from '@apollo/client';
+import { CREATE_FAMILY_USER } from '../utils/mutations';
 
 const FamilyComponent = () => {
   const [numberOfPeople, setNumberOfPeople] = useState(0);
   const [familyData, setFamilyData] = useState([]);
+  const [createFamilyUser, { error }] = useMutation(CREATE_FAMILY_USER);
+  const token = Auth.loggedIn() ? Auth.getToken() : null;
+  const authContext = {
+    headers:{Authorization: `Bearer ${token}`}
+  };
+  
 
   const handleInputChange = (event) => {
     const { value } = event.target;
@@ -18,8 +27,9 @@ const FamilyComponent = () => {
       ...updatedFamilyData[index],
       [name]: value,
     };
-    setFamilyData(updatedFamilyData);
+    setFamilyData(updatedFamilyData);    
   };
+  const createFamily = ()=>{}
 
   const renderCards = () => {
     const cards = [];
