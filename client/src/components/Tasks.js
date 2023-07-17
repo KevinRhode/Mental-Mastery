@@ -6,7 +6,14 @@ import { CREATE_TASK } from "../utils/mutations";
 const Tasks = () => {
     const [createTask, { error }] = useMutation(CREATE_TASK);
     const token = Auth.loggedIn() ? Auth.getToken() : null;
+    const authContext = {
+        headers:{Authorization: `Bearer ${token}`}
+      };
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
 
+    }
+    
     return (
         <div className="Tasks">
             <div className="header">
