@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
+import backgroundImage from '../assets/ori_52043_51102fd328b18d2ccf3aaa0dd7232590303d15fe_golden-clock-on-turquoise-background-steampunk.jpg';
+
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN_USER);
@@ -30,62 +32,119 @@ function Login(props) {
   };
 
   return (
-    <div
-      className="container my-1"
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh',
-        padding: '20px',
-        boxSizing: 'border-box',
-      }}
-    >
-      <div style={{ maxWidth: '400px', width: '100%' }}>
-        <Link to="/signup" style={{ display: 'block', marginBottom: '10px', textAlign: 'center' }}>
-          ← Go to Signup
-        </Link>
+    <div className="login-background">
+      <div className="container my-1">
+        <div className="card">
+          <Link to="/signup" className="signup-link">
+            ← Go to Signup
+          </Link>
 
-        <h2 style={{ textAlign: 'center' }}>Login</h2>
-        <form onSubmit={handleFormSubmit}>
-          <div style={{ marginBottom: '10px' }}>
-            <label htmlFor="email" style={{ display: 'block', marginBottom: '5px' }}>
-              Email address:
-            </label>
-            <input
-              placeholder="youremail@test.com"
-              name="email"
-              type="email"
-              id="email"
-              style={{ width: '100%', padding: '5px' }}
-              onChange={handleChange}
-            />
-          </div>
-          <div style={{ marginBottom: '10px' }}>
-            <label htmlFor="pwd" style={{ display: 'block', marginBottom: '5px' }}>
-              Password:
-            </label>
-            <input
-              placeholder="******"
-              name="password"
-              type="password"
-              id="pwd"
-              style={{ width: '100%', padding: '5px' }}
-              onChange={handleChange}
-            />
-          </div>
-          {error ? (
-            <div>
-              <p className="error-text" style={{ textAlign: 'center' }}>
-                you chose...poorly 🧙‍♂️
-              </p>
+          <h2 className="login-heading">Login</h2>
+          <form onSubmit={handleFormSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Email address:</label>
+              <input
+                placeholder="youremail@test.com"
+                name="email"
+                type="email"
+                id="email"
+                className="form-input"
+                onChange={handleChange}
+              />
             </div>
-          ) : null}
-          <div style={{ textAlign: 'right' }}>
-            <button type="submit">Submit</button>
-          </div>
-        </form>
+            <div className="form-group">
+              <label htmlFor="pwd">Password:</label>
+              <input
+                placeholder="******"
+                name="password"
+                type="password"
+                id="pwd"
+                className="form-input"
+                onChange={handleChange}
+              />
+            </div>
+            {error && (
+              <div className="error-message">
+                <p className="error-text">you chose...poorly 🧙‍♂️</p>
+              </div>
+            )}
+            <div className="form-group">
+              <button type="submit" className="submit-button">Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
+      <style jsx>{`
+        .login-background {
+          position: relative;
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-image: url(${backgroundImage});
+          background-size: cover;
+          background-position: center;
+        }
+
+        .login-background::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url(${backgroundImage});
+          background-size: cover;
+          background-position: center;
+          filter: blur(8px);
+          z-index: -1;
+        }
+
+        .container {
+          max-width: 400px;
+          width: 100%;
+        }
+
+        .card {
+          background: linear-gradient(to bottom right, #103057, #13375e);
+          border-radius: 10px;
+          padding: 20px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          color: white;
+        }
+
+        .signup-link {
+          display: block;
+          margin-bottom: 10px;
+          text-align: center;
+        }
+
+        .login-heading {
+          text-align: center;
+        }
+
+        .form-group {
+          margin-bottom: 10px;
+        }
+
+        .form-input {
+          width: 100%;
+          padding: 5px;
+        }
+
+        .error-message {
+          text-align: center;
+          margin-top: 10px;
+        }
+
+        .error-text {
+          color: red;
+        }
+
+        .submit-button {
+          width: 100%;
+        }
+      `}</style>
     </div>
   );
 }
