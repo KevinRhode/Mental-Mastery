@@ -3,9 +3,9 @@ import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
 import { CREATE_TASK } from "../utils/mutations";
 
-class Tasks extends Component {
+const Tasks = () => {
 
-render() {
+
     return (
         <div className="Tasks">
             <div className="header">
@@ -16,7 +16,6 @@ render() {
             </div>
         </div>
     );
-}
 }
 
 export default Tasks;
