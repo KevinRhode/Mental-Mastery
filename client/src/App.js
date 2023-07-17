@@ -7,6 +7,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import BackgroundSVG from '../assets/iStock-886511790 [Converted].svg';
 
 import Home from './pages/Home';
 import Header from './components/Header';
@@ -43,7 +44,9 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
-            
+            {/* Apply the SVG background */}
+            <img src={BackgroundSVG} alt="Background" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0, zIndex: -1 }} />
+            {/* Your other content goes here */}
           </div>
           <Footer />
         </div>

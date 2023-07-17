@@ -3,6 +3,7 @@ import Header from ('./Header');
 import Footer from './Footer';
 
 const FamilyComponent = () => {
+  
   const [numberOfPeople, setNumberOfPeople] = useState(0);
   const [familyData, setFamilyData] = useState([]);
 

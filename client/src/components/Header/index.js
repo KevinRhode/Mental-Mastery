@@ -1,15 +1,22 @@
 // import React from 'react';
 // import { Link } from 'react-router-dom';
-
 // import Auth from '../../utils/auth';
+// import BackgroundSVG from '../assets/logowithcorrectcolor.png';
 
 // const Header = () => {
 //   const logout = (event) => {
 //     event.preventDefault();
 //     Auth.logout();
 //   };
+
 //   return (
-//     <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
+//     <header
+//       className="bg-primary text-light mb-4 py-3 flex-row align-center"
+//       style={{
+//         background: `url(${BackgroundSVG}) no-repeat center center fixed`,
+//         backgroundSize: 'cover',
+//       }}
+//     >
 //       <div className="container flex-row justify-space-between-lg justify-center align-center">
 //         <div>
 //           <Link className="text-light" to="/">
@@ -44,5 +51,3 @@
 // };
 
 // export default Header;
-
-// example
