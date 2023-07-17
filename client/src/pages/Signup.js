@@ -6,6 +6,8 @@ import { ADD_USER } from '../utils/mutations';
 
 import backgroundImage from '../assets/ori_52043_51102fd328b18d2ccf3aaa0dd7232590303d15fe_golden-clock-on-turquoise-background-steampunk.jpg';
 
+import cardBackgroundImage from '../assets/depositphotos_38252213-stock-photo-gold-leaf-on-buddha-sculpture.jpg';
+
 function Signup(props) {
   const [formState, setFormState] = useState({ firstName: '', lastName: '', email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
@@ -120,12 +122,17 @@ function Signup(props) {
         }
 
         .card {
-          background: linear-gradient(to bottom right, #103057, #13375e);
+          background-image: url(${cardBackgroundImage});
           border-radius: 10px;
           padding: 20px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-          color: white;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3);
+          color: #1B5060;
+          font-weight: bold;
+          text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.9);
         }
+        
+        
+        
 
         .signup-link {
           display: block;
