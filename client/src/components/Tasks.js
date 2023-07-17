@@ -13,7 +13,7 @@ const Tasks = () => {
         event.preventDefault();
         try {
             const data = await createTask({
-              variables: {name:"Test",location:"Location"},
+              variables: {taskname:"Test",location:"Location"},
               context: authContext
             });
           } catch (e) {
