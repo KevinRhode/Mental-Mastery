@@ -11,9 +11,16 @@ const Tasks = () => {
       };
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        try {
+            const data = await createTask({
+              variables: {name:"Test",location:"Location"},
+              context: authContext
+            });
+          } catch (e) {
+            console.log(e);
+          }
+    };
 
-    }
-    
     return (
         <div className="Tasks">
             <div className="header">
