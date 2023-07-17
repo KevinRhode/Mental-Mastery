@@ -4,7 +4,8 @@ import { useMutation } from "@apollo/client";
 import { CREATE_TASK } from "../utils/mutations";
 
 const Tasks = () => {
-
+    const [createTask, { error }] = useMutation(CREATE_TASK);
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     return (
         <div className="Tasks">
