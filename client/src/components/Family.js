@@ -32,24 +32,70 @@ const FamilyComponent = () => {
   const createFamily = ()=>{}
 
   const renderCards = () => {
+  const goldLeafImage = require('../assets/goldLeaf.jpg').default;
+  const goldLeaf = `url(${goldLeafImage})`;
+    const cardStyles = {
+      border: '1px solid #1b5060',
+      padding: '10px',
+      margin: '10px',
+      borderRadius: '5px',
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+      backgroundImage: `url(${goldLeaf})`,
+      backgroundRepeat: 'repeat', // Tile the image
+      backgroundSize: '100%', // Adjust the size to your preference
+    };
+  
+    const labelStyles = {
+      display: 'block',
+      marginBottom: '6px',
+    };
+  
+    const inputStyles = {
+      width: '100%',
+      padding: '6px 10px',
+      border: '1px solid #ccc',
+      borderRadius: '4px',
+      boxSizing: 'border-box',
+    };
+  
     const cards = [];
     for (let i = 0; i < numberOfPeople; i++) {
       cards.push(
-        <div key={i}>
+        <div key={i} style={cardStyles}>
           <h3>Person {i + 1}</h3>
-          <label>
+          <label style={labelStyles}>
             Name:
             <input
               type="text"
               name="name"
+              style={inputStyles}
               onChange={(event) => handleCardInputChange(i, event)}
             />
           </label>
-          <label>
+          <label style={labelStyles}>
             Date of Birth:
             <input
               type="date"
               name="dateOfBirth"
+              style={inputStyles}
+              onChange={(event) => handleCardInputChange(i, event)}
+            />
+          </label>
+          <label style={labelStyles}>
+            Pronoun:
+            <input
+              type="text"
+              name="name"
+              style={inputStyles}
+              onChange={(event) => handleCardInputChange(i, event)}
+            />
+          </label>
+          <label style={labelStyles}>
+            Religious Preference:
+            <input
+              type="text"
+              name="name"
+              style={inputStyles}
               onChange={(event) => handleCardInputChange(i, event)}
             />
           </label>
@@ -59,7 +105,8 @@ const FamilyComponent = () => {
     }
     return cards;
   };
-
+  
+ 
   return (
     <div>
          <Header /> {/* Render your Header component */}
