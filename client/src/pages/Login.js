@@ -6,6 +6,8 @@ import Auth from '../utils/auth';
 
 import backgroundImage from '../assets/ori_52043_51102fd328b18d2ccf3aaa0dd7232590303d15fe_golden-clock-on-turquoise-background-steampunk.jpg';
 
+import cardBackgroundImage from '../assets/depositphotos_38252213-stock-photo-gold-leaf-on-buddha-sculpture.jpg';
+
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN_USER);
@@ -75,76 +77,65 @@ function Login(props) {
         </div>
       </div>
       <style jsx>{`
-        .login-background {
-          position: relative;
-          min-height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-image: url(${backgroundImage});
-          background-size: cover;
-          background-position: center;
-        }
+  div.login-background {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(${backgroundImage});
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+  }
 
-        .login-background::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-image: url(${backgroundImage});
-          background-size: cover;
-          background-position: center;
-          filter: blur(8px);
-          z-index: -1;
-        }
+  .container {
+    max-width: 400px;
+    width: 100%;
+  }
 
-        .container {
-          max-width: 400px;
-          width: 100%;
-        }
+  .card {
+    background-image: url(${cardBackgroundImage});
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-weight: 800;
+    text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
+  }
 
-        .card {
-          background: linear-gradient(to bottom right, #103057, #13375e);
-          border-radius: 10px;
-          padding: 20px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-          color: white;
-        }
+  .signup-link {
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+  }
 
-        .signup-link {
-          display: block;
-          margin-bottom: 10px;
-          text-align: center;
-        }
+  .login-heading {
+    text-align: center;
+  }
 
-        .login-heading {
-          text-align: center;
-        }
+  .form-group {
+    margin-bottom: 10px;
+  }
 
-        .form-group {
-          margin-bottom: 10px;
-        }
+  .form-input {
+    width: 100%;
+    padding: 5px;
+  }
 
-        .form-input {
-          width: 100%;
-          padding: 5px;
-        }
+  .error-message {
+    text-align: center;
+    margin-top: 10px;
+  }
 
-        .error-message {
-          text-align: center;
-          margin-top: 10px;
-        }
+  .error-text {
+    color: red;
+  }
 
-        .error-text {
-          color: red;
-        }
-
-        .submit-button {
-          width: 100%;
-        }
-      `}</style>
+  .submit-button {
+    width: 100%;
+  }
+`}</style>
     </div>
   );
 }

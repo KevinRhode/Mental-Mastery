@@ -125,15 +125,11 @@ function Signup(props) {
           background-image: url(${cardBackgroundImage});
           border-radius: 10px;
           padding: 20px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3);
-          color: #1B5060;
-          font-weight: bold;
-          text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.9);
+          box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3);
+          color: white;
+          font-weight: 800; /* Increase the font-weight value for a bolder appearance */
+          text-shadow: 0 0 8px rgba(0,0,100, 100);
         }
-        
-        
-        
-
         .signup-link {
           display: block;
           margin-bottom: 10px;
