@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { CREATE_TASK } from "../utils/mutations";
 
 const Tasks = () => {
+    const [formState, setFormState] = useState({ taskname: '', location: '' });
     const [createTask, { error }] = useMutation(CREATE_TASK);
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     const authContext = {
@@ -25,7 +26,7 @@ const Tasks = () => {
         <div className="Tasks">
             <div className="header">
                 <form>
-                    <input placeholder="enter task"></input>
+                    <input placeholder="enter task" onClick={handleFormSubmit}></input>
                     <button type="submit">add</button>
                 </form>
             </div>
