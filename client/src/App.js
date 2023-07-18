@@ -13,7 +13,7 @@ import Family from './components/Family';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Tasks from './components/Tasks'
-
+import FamilyUser from './components/FamilyUser';
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -41,14 +41,17 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>       
+      <Router>
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path='/family' element={<Family/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/signup' element={<Signup/>}/>
-          <Route path='/task' element={<Tasks/>}/>
-        </Routes>      
+          <Route path="/" element={<Home />} />
+          <Route path='/family' element={<Family />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/task' element={<Tasks />} />
+          <Route path="/familyuser" element={<FamilyUser />} />
+
+
+        </Routes>
       </Router>
     </ApolloProvider>
   );
