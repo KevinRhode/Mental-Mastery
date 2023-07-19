@@ -77,7 +77,7 @@ function Login(props) {
         </div>
       </div>
       <style jsx>{`
-  div.login-background {
+  .login-background {
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -86,7 +86,6 @@ function Login(props) {
     background-image: url(${backgroundImage});
     background-size: cover;
     background-position: center;
-    z-index: -1;
   }
 
   .container {
@@ -102,6 +101,7 @@ function Login(props) {
     color: white;
     font-weight: 800;
     text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
+    z-index: 1;
   }
 
   .signup-link {

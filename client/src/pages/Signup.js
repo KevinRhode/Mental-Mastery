@@ -10,19 +10,25 @@ import cardBackgroundImage from '../assets/depositphotos_38252213-stock-photo-go
 
 function Signup(props) {
   const [formState, setFormState] = useState({ firstName: '', lastName: '', email: '', password: '' });
-  const [addUser] = useMutation(ADD_USER);
+  const [addUser, { error }] = useMutation(ADD_USER);
+  const [signupError, setSignupError] = useState(null);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        email: formState.email,
-        password: formState.password,
-        username: formState.firstName + ' ' + formState.lastName,
-      },
-    });
-    const token = mutationResponse.data.register.token;
-    Auth.login(token);
+    try {
+      const mutationResponse = await addUser({
+        variables: {
+          email: formState.email,
+          password: formState.password,
+          username: formState.firstName + ' ' + formState.lastName,
+        },
+      });
+      const token = mutationResponse.data.register.token;
+      Auth.login(token);
+    } catch (e) {
+      setSignupError('An error occurred during signup. Please try again.');
+      console.log(e);
+    }
   };
 
   const handleChange = (event) => {
@@ -36,6 +42,7 @@ function Signup(props) {
   return (
     <div className="login-background">
       <div className="background-blur" />
+      {/* ... */}
       <div className="container my-1">
         <div className="card">
           <Link to="/login" className="signup-link">
@@ -44,17 +51,12 @@ function Signup(props) {
 
           <h2 className="login-heading">Signup</h2>
           <form onSubmit={handleFormSubmit}>
-            <div className="form-group">
-              <label htmlFor="firstName">First Name:</label>
-              <input
-                placeholder="First"
-                name="firstName"
-                type="text"
-                id="firstName"
-                className="form-input"
-                onChange={handleChange}
-              />
-            </div>
+            {/* ... */}
+            {signupError && (
+              <div className="error-message">
+                <p className="error-text">{signupError}</p>
+              </div>
+            )}
             <div className="form-group">
               <label htmlFor="lastName">Last Name:</label>
               <input
