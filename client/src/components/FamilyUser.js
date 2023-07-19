@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Auth from '../utils/auth';
-import { useMutation, useQuery } from '@apollo/client';
-import { CREATE_FAMILY_USER } from '../utils/mutations';
+import { useQuery } from '@apollo/client';
+import { GET_FAMILY_USER } from '../utils/queries';
 
 const FamilyUserComponent = () => {
     //   const [familyUser, setFamilyUser] = useState(null);
@@ -10,7 +10,7 @@ const FamilyUserComponent = () => {
         headers: { Authorization: `Bearer ${token}` },
     };
 
-    const [familyUser, { loading, error }] = useQuery(CREATE_FAMILY_USER);
+    const [familyUser, { loading, error }] = useQuery(GET_FAMILY_USER);
 
     // useEffect(() => {
     //     if (familyUser) {
