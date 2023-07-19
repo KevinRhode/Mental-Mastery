@@ -26,7 +26,7 @@ function Signup(props) {
       const token = mutationResponse.data.register.token;
       Auth.login(token);
     } catch (e) {
-      setSignupError('An error occurred during signup. Please try again.');
+      setSignupError('hey....try again.');
       console.log(e);
     }
   };
