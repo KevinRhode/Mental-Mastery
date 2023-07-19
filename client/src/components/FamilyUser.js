@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Auth from '../utils/auth';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { CREATE_FAMILY_USER } from '../utils/mutations';
 
 const FamilyUserComponent = () => {
-    const [familyUser, setFamilyUser] = useState(null);
+    //   const [familyUser, setFamilyUser] = useState(null);
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     const authContext = {
         headers: { Authorization: `Bearer ${token}` },
     };
 
-    const [createFamilyUser, { loading, error }] = useMutation(CREATE_FAMILY_USER);
+    const [familyUser, { loading, error }] = useQuery(CREATE_FAMILY_USER);
 
-    useEffect(() => {
-        if (familyUser) {
-            createFamilyUser({ variables: familyUser })
-                .then(response => {
-                    // Handle the response if needed 
-                    console.log("User information")
-                })
-                .catch(error => {
-                    // Handle the error if needed
-                    console.log(" Refer console for log")
-                });
-        }
-    }, [createFamilyUser, familyUser]);
+    // useEffect(() => {
+    //     if (familyUser) {
+    //         createFamilyUser({ variables: familyUser })
+    //             .then(response => {
+    //                 // Handle the response if needed 
+    //                 console.log("User information")
+    //             })
+    //             .catch(error => {
+    //                 // Handle the error if needed
+    //                 console.log(" Refer console for log")
+    //             });
+    //     }
+    // }, [createFamilyUser, familyUser]);
 
     if (loading) {
         return <p>Loading User information...</p>;
