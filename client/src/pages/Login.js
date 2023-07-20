@@ -145,13 +145,14 @@ function Login(props) {
   }
 
   .error-text {
-    color: red;
+    color: black;
     text-align: center;
     font-size: 3rem;
-    
     font-weight: bold;
-    text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
+    text-shadow: 3px 3px 8px rgba(255, 215, 0, 0.5); /* Adjust the shadow color and blur for gold effect */
   }
+  
+  
 
   .submit-button {
     width: 100%;
