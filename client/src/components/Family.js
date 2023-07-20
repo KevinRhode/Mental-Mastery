@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { CREATE_FAMILY_USER } from '../utils/mutations';
+import goldLeafImage from '../assets/depositphotos_38252213-stock-photo-gold-leaf-on-buddha-sculpture.jpg';
 
 const FamilyComponent = () => {
   const [numberOfPeople, setNumberOfPeople] = useState(0);
@@ -39,6 +40,8 @@ const FamilyComponent = () => {
       backgroundImage: `url(${goldLeafImage})`,
       backgroundRepeat: 'repeat', // Tile the image
       backgroundSize: '100%', // Adjust the size to your preference
+      color: '#02151d !important',
+
     };
 
     const labelStyles = {
@@ -58,7 +61,7 @@ const FamilyComponent = () => {
     for (let i = 0; i < numberOfPeople; i++) {
       cards.push(
         <div key={i} style={cardStyles}>
-          <h3>Person {i + 1}</h3>
+          <h3 style={{color: '#02151d', backgroundColor: '#ffffffCC'}}>Person {i + 1}</h3>
           <label style={labelStyles}>
             Name:
             <input
@@ -110,8 +113,15 @@ const FamilyComponent = () => {
     borderRadius: '5px',
   };
 
+ const containerStyles = {
+    marginTop: '100px', 
+    backgroundImage: `url(${goldLeafImage})`, 
+    backgroundRepeat: 'repeat', 
+    backgroundSize: '100%',
+  };
+
   return (
-    <div>
+    <div style={containerStyles}>
       <div style={labelContainerStyles}>
         <label>
           How many people are in your family?
