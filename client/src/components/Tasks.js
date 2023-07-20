@@ -27,14 +27,7 @@ const Tasks = () => {
           }
     };
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormState({
-          ...formState,
-          [name]: value,
-        });
-      };
-
+    if (loading) {
     return (
         <div className="Tasks">
             <div className="header">
@@ -43,8 +36,12 @@ const Tasks = () => {
                     <button type="submit" onClick={handleFormSubmit}>add</button>
                 </form>
             </div>
+            <div className="content">
+            Loading...
+        </div>
         </div>
     );
+}
 }
 
 export default Tasks;
