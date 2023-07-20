@@ -87,7 +87,7 @@ function App() {
     textAlign: 'center',
   };
 
-  return (
+  return (   
     <div style={appStyles}>
       <ApolloProvider client={client}>
         <Header /> {/* Render the Header component here */}
@@ -119,12 +119,15 @@ function App() {
               <Route path="/family" element={<Family />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
-              <Route path="/task" element={<Tasks />} />
+              <Route path="/task" element={<Tasks />} />              
+              <Route path="/familyuser" element={<FamilyUser />} />
+              <Route path="/familyuser/:id" element={<FamilyUser />} />              
             </Routes>
         </div>
         <Footer />
       </ApolloProvider>
     </div>
+
   );
 }
 
