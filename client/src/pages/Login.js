@@ -42,6 +42,7 @@ function Login(props) {
           </Link>
 
           <h2 className="login-heading">Login</h2>
+          
           <form onSubmit={handleFormSubmit}>
             <div className="form-group">
               <label htmlFor="email">Email address:</label>
@@ -65,19 +66,20 @@ function Login(props) {
                 onChange={handleChange}
               />
             </div>
+            
+            <div className="form-group">
+              <button type="submit" className="submit-button">Submit</button>
+            </div>
             {error && (
               <div className="error-message">
                 <p className="error-text">you chose...poorly 🧙‍♂️</p>
               </div>
             )}
-            <div className="form-group">
-              <button type="submit" className="submit-button">Submit</button>
-            </div>
           </form>
         </div>
       </div>
       <style jsx>{`
-  div.login-background {
+  .login-background {
     position: relative;
     min-height: 100vh;
     display: flex;
@@ -86,7 +88,6 @@ function Login(props) {
     background-image: url(${backgroundImage});
     background-size: cover;
     background-position: center;
-    z-index: -1;
   }
 
   .container {
@@ -102,6 +103,7 @@ function Login(props) {
     color: white;
     font-weight: 800;
     text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
+    z-index: 1;
   }
 
   .signup-link {
@@ -126,10 +128,14 @@ function Login(props) {
   .error-message {
     text-align: center;
     margin-top: 10px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
   }
 
   .error-text {
-    color: red;
+    color: Black;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
   }
 
   .submit-button {

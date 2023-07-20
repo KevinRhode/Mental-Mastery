@@ -1,7 +1,7 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
 const Home = () => {
   // const { loading, data } = useQuery();
   // const thoughts = data?.thoughts || [];
@@ -9,11 +9,13 @@ const Home = () => {
   return (
     <>
       <Header />
-      <div className="a">
-        <div className="a">This is Text</div>
+      <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.7)', paddingTop: '50px' }}> {/* Add paddingTop to create space */}
+        <div style={{ fontSize: '4rem', color: '#02151d', textAlign: 'center', marginTop: '-20px', padding: '20px', marginBottom: '50px' }}>  
+          Welcome to Mental Mastery! <br/>Unlock Your Mind. Master Your Tasks.
+        </div>
       </div>
-      <Footer/>
     </>
   );
 };
+
 export default Home;
