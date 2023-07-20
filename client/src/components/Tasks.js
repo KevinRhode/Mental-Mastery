@@ -5,6 +5,8 @@ import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { CREATE_TASK } from "../utils/mutations";
 
+
+
 const Tasks = () => {
     const [formState, setFormState] = useState({ taskname: '', location: '' });
     const [createTask, { error }] = useMutation(CREATE_TASK);
