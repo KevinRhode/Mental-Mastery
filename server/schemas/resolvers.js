@@ -50,12 +50,14 @@ const resolvers = {
       return task;
     },
     createFamilyUser: async (parent, { birthDay, proNoun, religion }, context) => {
-      const familyUser = await FamilyUser.create({ birthDay, proNoun, religion })
-      return familyUser;
-      // if (context.user) {
+      if (context.user) {
+        const newFamilyUser = await FamilyUser.create({ birthDay, proNoun, religion });
+        // Update the Family document with the new familyUserId
+        await Family.findByIdAndUpdate(context.user._id, { $push: { familyuserIds: newFamilyUser._id } });
 
-      // }
-      // throw new AuthenticationError("You need to be logged in!");
+        return newFamilyUser;
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
     // updateFamily: async (parent, { username, email }) => {},
     updateTask: async (parent, { taskId, taskname, location, date }, context) => {
