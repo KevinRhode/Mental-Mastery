@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Auth from "../utils/auth";
 import { useMutation } from "@apollo/client";
+import { useState } from "react";
 import { CREATE_TASK } from "../utils/mutations";
 
 const Tasks = () => {
@@ -22,12 +23,20 @@ const Tasks = () => {
           }
     };
 
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormState({
+          ...formState,
+          [name]: value,
+        });
+      };
+
     return (
         <div className="Tasks">
             <div className="header">
                 <form>
-                    <input placeholder="enter task" onClick={handleFormSubmit}></input>
-                    <button type="submit">add</button>
+                    <input placeholder="enter task" onChange={handleChange}></input>
+                    <button type="submit" onClick={handleFormSubmit}>add</button>
                 </form>
             </div>
         </div>
