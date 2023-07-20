@@ -16,3 +16,5 @@ function TaskList(props) {
         </ul>
     );
 }
+
+export default TaskList;
