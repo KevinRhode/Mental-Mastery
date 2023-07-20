@@ -4,7 +4,7 @@ import TaskList from "./TaskList";
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { CREATE_TASK } from "../utils/mutations";
-
+import { QUERY_ALL_TASKS } from "../utils/queries";
 
 
 const Tasks = () => {
