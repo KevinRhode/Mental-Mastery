@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   ApolloClient,
   InMemoryCache,
@@ -6,24 +6,25 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
+import Header from './components/Header'; // Make sure the import path is correct
 import Home from './pages/Home';
 import Family from './components/Family';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Tasks from './components/Tasks'
+import Tasks from './components/Tasks';
+import project3background from './assets/Project3Background.svg';
+import Footer from './components/Footer/index';
+
 import FamilyUser from './components/FamilyUser';
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
-// Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
   const token = localStorage.getItem('id_token');
-  // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
@@ -33,27 +34,97 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
 function App() {
+  const appStyles = {
+    backgroundImage: `url(${project3background})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundAttachment: 'fixed',
+    margin: 0,
+    padding: 0,
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+  };
+
+  const headerStyles = {
+    padding: '20px',
+    color: 'white',
+    textAlign: 'center',
+    zIndex: 1,
+    position: 'relative',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+  };
+
+  const navButtonsStyles = {
+    display: 'flex',
+    justifyContent: 'center',
+  };
+
+  const navButtonStyle = {
+    margin: '0 40px',
+    color: 'white',
+    textDecoration: 'none',
+  };
+
+  const contentStyles = {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '-90px',
+  };
+
+  const footerStyles = {
+    padding: '10px',
+    color: 'white',
+    textAlign: 'center',
+  };
+
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path='/family' element={<Family />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<Signup />} />
-          <Route path='/task' element={<Tasks />} />
-          <Route path="/familyuser" element={<FamilyUser />} />
-
-
-        </Routes>
-      </Router>
-    </ApolloProvider>
+    <div style={appStyles}>
+      <ApolloProvider client={client}>
+        <Header /> {/* Render the Header component here */}
+        <div style={headerStyles}>
+          <div style={navButtonsStyles}>
+            <Link to="/login" style={navButtonStyle}>
+              Login
+            </Link>
+            <Link to="/signup" style={navButtonStyle}>
+              Sign Up
+            </Link>
+            <Link to="/" style={navButtonStyle}>
+              Dashboard
+            </Link>
+            <Link to="/family" style={navButtonStyle}>
+              Family Size
+            </Link>
+            <Link to="/user" style={navButtonStyle}>
+              User
+            </Link>
+            <Link to="/task" style={navButtonStyle}>
+              Tasks
+            </Link>
+          </div>
+        </div>
+        <div style={contentStyles}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/family" element={<Family />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/task" element={<Tasks />} />
+            </Routes>
+        </div>
+        <Footer />
+      </ApolloProvider>
+    </div>
   );
 }
 

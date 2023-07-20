@@ -4,6 +4,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const footerStyles = {
+    color: '#DDB047 !important', 
+    
+  };
+
   return (
     <footer className="w-100 mt-auto bg-secondary p-4">
       <div className="container text-center mb-5">
@@ -24,6 +30,7 @@ const Footer = () => {
             aria-hidden="false"
           >
             ❤️
+          {' '}
           </span>{' '}
           by the Anuja Lawankar, Courtney Thibodeau, Griffin Wojtowicz, Kevin Rhode, and Laura Strait
         </h4>
