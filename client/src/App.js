@@ -8,6 +8,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+
 import Home from './pages/Home';
 import Family from './components/Family';
 import Login from './pages/Login';
@@ -49,7 +50,7 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/task' element={<Tasks />} />
           <Route path="/familyuser" element={<FamilyUser />} />
-
+          <Route path="/familyuser/:id" element={<FamilyUser />} />
 
         </Routes>
       </Router>
