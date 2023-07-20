@@ -38,7 +38,10 @@ function Signup(props) {
       [name]: value,
     });
   };
-
+  // const handleButtonClick = () => {
+  //   clickSound.play();
+  //   handleFormSubmit();
+  // };
   return (
     <div className="login-background">
       <div className="background-blur" />
@@ -52,11 +55,6 @@ function Signup(props) {
           <h2 className="login-heading">Signup</h2>
           <form onSubmit={handleFormSubmit}>
             {/* ... */}
-            {signupError && (
-              <div className="error-message">
-                <p className="error-text">{signupError}</p>
-              </div>
-            )}
             <div className="form-group">
               <label htmlFor="lastName">Last Name:</label>
               <input
@@ -93,6 +91,11 @@ function Signup(props) {
             <div className="form-group">
               <button type="submit" className="submit-button">Submit</button>
             </div>
+            {signupError && (
+              <div className="error-message">
+                <p className="error-text">{signupError}</p>
+              </div>
+            )}
           </form>
         </div>
       </div>
@@ -151,7 +154,15 @@ function Signup(props) {
           width: 100%;
           padding: 5px;
         }
-
+        .error-message {
+          highlight: red
+          text-align: center;
+          margin-top: 10px;
+          font-weight: bold;
+          text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
+        }
+      
+      
         .submit-button {
           width: 100%;
         }

@@ -35,6 +35,7 @@ function Login(props) {
 
   return (
     <div className="login-background">
+      <div className="background-blur" />
       <div className="container my-1">
         <div className="card">
           <Link to="/signup" className="signup-link">
@@ -79,16 +80,18 @@ function Login(props) {
         </div>
       </div>
       <style jsx>{`
-  .login-background {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url(${backgroundImage});
-    background-size: cover;
-    background-position: center;
-  }
+        .background-blur {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url(${backgroundImage});
+          background-size: cover;
+          background-position: center;
+          filter: blur(15px);
+          z-index: -1;
+        }
 
   .container {
     max-width: 400px;
@@ -103,7 +106,7 @@ function Login(props) {
     color: white;
     font-weight: 800;
     text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
-    z-index: 1;
+    
   }
 
   .signup-link {
@@ -133,7 +136,7 @@ function Login(props) {
   }
 
   .error-text {
-    color: Black;
+    color: white;
     font-weight: bold;
     text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
   }
