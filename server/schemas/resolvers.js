@@ -9,7 +9,16 @@ const resolvers = {
         return Family.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("You need to be logged in!");
+
     },
+
+    getFamilyUserById: async (parent, { id }) => {
+
+      return FamilyUser.findOne({ _id: id });
+
+
+    }
+
   },
 
   Mutation: {
@@ -30,42 +39,42 @@ const resolvers = {
 
       return { token, user };
     },
-    
+
     register: async (parent, { username, email, password }) => {
       const user = await Family.create({ username, email, password });
       const token = signToken(user);
       return { token, user };
     },
-    createTask: async (parent, { taskname, location },context) => {
-      const task =await Task.create({taskname,location});
+    createTask: async (parent, { taskname, location }, context) => {
+      const task = await Task.create({ taskname, location });
       return task;
     },
-    createFamilyUser: async (parent, { birthDay,proNoun,religion },context) => {
-      const familyUser = await FamilyUser.create({birthDay, proNoun,religion})
+    createFamilyUser: async (parent, { birthDay, proNoun, religion }, context) => {
+      const familyUser = await FamilyUser.create({ birthDay, proNoun, religion })
       return familyUser;
       // if (context.user) {
-        
+
       // }
       // throw new AuthenticationError("You need to be logged in!");
     },
     // updateFamily: async (parent, { username, email }) => {},
-    updateTask: async (parent, { taskId,taskname,location,date },context) => {
+    updateTask: async (parent, { taskId, taskname, location, date }, context) => {
       const updatedTask = await Task.findByIdAndUpdate(
-        {_id: taskId},
-        {taskId,taskname,location,date },
-        {new:true}
+        { _id: taskId },
+        { taskId, taskname, location, date },
+        { new: true }
       )
       return updatedTask;
       // if (context.user) {
-        
+
       // }
       // throw new AuthenticationError("You need to be logged in!");
     },
-    updateFamilyUser: async (parent, { familyUserId,birthDay,proNoun,religion  },context) => {
+    updateFamilyUser: async (parent, { familyUserId, birthDay, proNoun, religion }, context) => {
       const updatedFamilyUser = await FamilyUser.findByIdAndUpdate(
-        {_id:familyUserId},
-        {birthDay,proNoun,religion },
-        {new:true}
+        { _id: familyUserId },
+        { birthDay, proNoun, religion },
+        { new: true }
       )
       return updatedFamilyUser;
     },
@@ -75,7 +84,7 @@ const resolvers = {
     },
     deleteFamilyUser: async (parent, { username, email }) => {
       //will add filter with auth is implemented
-    },   
+    },
   },
 };
 
