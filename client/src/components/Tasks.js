@@ -42,6 +42,18 @@ const Tasks = () => {
         </div>
     );
 }
+    const {getAllTasks} = data;
+    return (
+      <div className="Tasks">
+          <div className="header">
+            <form>
+               <input placeholder="enter task" onChange={handleChange}></input>
+               <button type="submit" onClick={handleFormSubmit}>add</button>
+            </form>
+        </div>
+
+      </div>
+    )
 }
 
 export default Tasks;
