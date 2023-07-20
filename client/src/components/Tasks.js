@@ -51,9 +51,11 @@ const Tasks = () => {
                <button type="submit" onClick={handleFormSubmit}>add</button>
             </form>
         </div>
-
-      </div>
-    )
-}
+          <div className="content">
+            <TaskList results={getAllTasks}/>
+          </div>
+        </div>
+    );
+};
 
 export default Tasks;
