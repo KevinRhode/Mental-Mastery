@@ -9,6 +9,7 @@ import { QUERY_ALL_TASKS } from "../utils/queries";
 
 const Tasks = () => {
     const [formState, setFormState] = useState({ taskname: '', location: '' });
+    const { loading, err, data } = useQuery (QUERY_ALL_TASKS);
     const [createTask, { error }] = useMutation(CREATE_TASK);
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     const authContext = {
