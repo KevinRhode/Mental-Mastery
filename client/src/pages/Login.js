@@ -42,6 +42,7 @@ function Login(props) {
           </Link>
 
           <h2 className="login-heading">Login</h2>
+          
           <form onSubmit={handleFormSubmit}>
             <div className="form-group">
               <label htmlFor="email">Email address:</label>
@@ -65,14 +66,15 @@ function Login(props) {
                 onChange={handleChange}
               />
             </div>
+            
+            <div className="form-group">
+              <button type="submit" className="submit-button">Submit</button>
+            </div>
             {error && (
               <div className="error-message">
                 <p className="error-text">you chose...poorly 🧙‍♂️</p>
               </div>
             )}
-            <div className="form-group">
-              <button type="submit" className="submit-button">Submit</button>
-            </div>
           </form>
         </div>
       </div>
@@ -126,10 +128,14 @@ function Login(props) {
   .error-message {
     text-align: center;
     margin-top: 10px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
   }
 
   .error-text {
-    color: red;
+    color: Black;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
   }
 
   .submit-button {

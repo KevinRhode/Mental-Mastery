@@ -114,7 +114,7 @@ function Signup(props) {
           background-image: url(${backgroundImage});
           background-size: cover;
           background-position: center;
-          filter: blur(8px);
+          filter: blur(15px);
           z-index: -1;
         }
 
@@ -136,6 +136,7 @@ function Signup(props) {
           display: block;
           margin-bottom: 10px;
           text-align: center;
+          text-size: 10px;
         }
 
         .login-heading {
