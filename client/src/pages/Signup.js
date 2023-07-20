@@ -161,7 +161,13 @@ function Signup(props) {
           font-weight: bold;
           text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
         }
-      
+        .error-text {
+          color: red;
+          text-align: center;
+          font-size: 3rem;
+          font-weight: bold;
+          text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
+        }
       
         .submit-button {
           width: 100%;

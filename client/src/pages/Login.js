@@ -80,6 +80,14 @@ function Login(props) {
         </div>
       </div>
       <style jsx>{`
+       .login-background {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
         .background-blur {
           position: absolute;
           top: 0;
@@ -105,7 +113,7 @@ function Login(props) {
     box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3);
     color: white;
     font-weight: 800;
-    text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
+    text-shadow: 0 0 8px rgba(0,0,100, 100);
     
   }
 
@@ -129,6 +137,7 @@ function Login(props) {
   }
 
   .error-message {
+    highlight: red
     text-align: center;
     margin-top: 10px;
     font-weight: bold;
@@ -136,7 +145,10 @@ function Login(props) {
   }
 
   .error-text {
-    color: white;
+    color: red;
+    text-align: center;
+    font-size: 3rem;
+    
     font-weight: bold;
     text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
   }
