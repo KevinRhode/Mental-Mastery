@@ -16,7 +16,9 @@ import Signup from './pages/Signup';
 import Tasks from './components/Tasks';
 import project3background from './assets/Project3Background.svg';
 import Footer from './components/Footer/index';
+
 import FamilyUser from './components/FamilyUser';
+// Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -86,17 +88,43 @@ function App() {
   };
 
   return (
-    <ApolloProvider client={client}>
-      <Router>       
-        <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path='/family' element={<Family/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/signup' element={<Signup/>}/>
-          <Route path='/task' element={<Tasks/>}/>
-        </Routes>      
-      </Router>
-    </ApolloProvider>
+    <div style={appStyles}>
+      <ApolloProvider client={client}>
+        <Header /> {/* Render the Header component here */}
+        <div style={headerStyles}>
+          <div style={navButtonsStyles}>
+            <Link to="/login" style={navButtonStyle}>
+              Login
+            </Link>
+            <Link to="/signup" style={navButtonStyle}>
+              Sign Up
+            </Link>
+            <Link to="/" style={navButtonStyle}>
+              Dashboard
+            </Link>
+            <Link to="/family" style={navButtonStyle}>
+              Family Size
+            </Link>
+            <Link to="/user" style={navButtonStyle}>
+              User
+            </Link>
+            <Link to="/task" style={navButtonStyle}>
+              Tasks
+            </Link>
+          </div>
+        </div>
+        <div style={contentStyles}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/family" element={<Family />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/task" element={<Tasks />} />
+            </Routes>
+        </div>
+        <Footer />
+      </ApolloProvider>
+    </div>
   );
 }
 
