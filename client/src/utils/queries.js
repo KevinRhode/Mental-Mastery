@@ -10,4 +10,13 @@ export const QUERY_ME = gql`
   }
 `;
 
-export const QUERY_ALL_TASKS = gql
+export const QUERY_ALL_TASKS = gql`
+  query GetAllTasks {
+    getAllTasks {
+      _id
+      date
+      location
+      taskname
+    }
+  }
+  `;
