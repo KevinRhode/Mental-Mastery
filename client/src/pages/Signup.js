@@ -124,12 +124,14 @@ function Signup(props) {
         .container {
           max-width: 400px;
           width: 100%;
+          top margin: 40px;
         }
 
         .card {
           background-image: url(${cardBackgroundImage});
           border-radius: 10px;
           padding: 20px;
+          top margin: 40px;
           box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3);
           color: white;
           font-weight: 800; /* Increase the font-weight value for a bolder appearance */

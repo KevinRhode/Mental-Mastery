@@ -109,6 +109,7 @@ function Login(props) {
   .card {
     background-image: url(${cardBackgroundImage});
     border-radius: 10px;
+    top margin: 40px;
     padding: 20px;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3);
     color: white;
