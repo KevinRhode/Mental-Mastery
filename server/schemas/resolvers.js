@@ -11,16 +11,20 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
 
     },
-
     getFamilyUserById: async (parent, { id }) => {
 
       return FamilyUser.findOne({ _id: id });
 
 
-    }
+    },
+    getAllTasks: async (parent, args, context) => {
+      // if (context.user) {
+        return Task.find({});
+        // }
+        // throw new AuthenticationError("You need to be logged in!");
+      },  
 
   },
-
   Mutation: {
     login: async (parent, { email, password }) => {
       const user = await Family.findOne({ email });
