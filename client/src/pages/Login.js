@@ -42,7 +42,7 @@ function Login(props) {
           </Link>
 
           <h2 className="login-heading">Login</h2>
-          
+
           <form onSubmit={handleFormSubmit}>
             <div className="form-group">
               <label htmlFor="email">Email address:</label>
@@ -66,7 +66,7 @@ function Login(props) {
                 onChange={handleChange}
               />
             </div>
-            
+
             <div className="form-group">
               <button type="submit" className="submit-button">Submit</button>
             </div>
@@ -84,8 +84,7 @@ function Login(props) {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-image: url(${backgroundImage});
+  
     background-size: cover;
     background-position: center;
   }
