@@ -102,7 +102,7 @@ const FamilyComponent = () => {
   const labelStyles = {
     display: 'block',
     padding: '10px',
-    boxShadow: '1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3)',
+    boxShadow: '1px 2px 4px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.3)',
     color: 'white',
     fontWeight: '800',
     textShadow: '0 0 10px rgba(0, 0, 100, 0.5)',
