@@ -127,7 +127,6 @@ function App() {
         <Footer />
       </ApolloProvider>
     </div>
-
   );
 }
 
