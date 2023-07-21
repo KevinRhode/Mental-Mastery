@@ -10,12 +10,22 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const QUERY_ALL_TASKS = gql`
+  query GetAllTasks {
+    getAllTasks {
+      _id
+      date
+      location
+      taskname
+    }
+  }
+  `;
 
 export const GET_FAMILY_USER = gql`
 query Query($getFamilyUserById: ID!) {
   getFamilyUserById(id: $getFamilyUserById) {
     _id
-    birthDay
+    dateOfBirth
     proNoun
     religion
   }

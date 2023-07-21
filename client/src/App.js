@@ -14,6 +14,7 @@ import Family from './components/Family';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Tasks from './components/Tasks';
+import TaskDash from './components/testDash';
 import project3background from './assets/Project3Background.svg';
 import Footer from './components/Footer/index';
 
@@ -111,6 +112,9 @@ function App() {
             <Link to="/task" style={navButtonStyle}>
               Tasks
             </Link>
+            <Link to="/task" style={navButtonStyle}>
+              Tasks
+            </Link>
           </div>
         </div>
         <div style={contentStyles}>
@@ -120,6 +124,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/task" element={<Tasks />} />
+            <Route path='/taskDash' element={<TaskDash/>}/>
             <Route path="/familyuser" element={<FamilyUser />} />
             <Route path="/familyuser/:id" element={<FamilyUser />} />
           </Routes>
