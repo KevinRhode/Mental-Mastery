@@ -41,7 +41,7 @@ const Tasks = () => {
     };
 
     const taskInput = {
-     
+      color: '#02151d',
     };
 
   const authContext = {
