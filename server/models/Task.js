@@ -1,27 +1,36 @@
 const { Schema, model } = require("mongoose");
 
-const taskSchema = new Schema({
-  // TaskName
-  // Location
-  // Date
-  // TaskId
+const { formatedCreatedAt } = require("../utils/helpers");
 
-  taskname: {
-    type: String,
-    required: true,
-  },
+const taskSchema = new Schema(
+  {
+    // TaskName
+    // Location
+    // Date
+    // TaskId
 
-  location: {
-    type: String,
-    required: true,
-  },
+    taskname: {
+      type: String,
+      required: true,
+    },
 
-  date: {
-    type: Date,
-    default: Date.now,
+    location: {
+      type: String,
+      required: true,
+    },
+
+    date: {
+      type: Date,
+      default: Date.now,
+      get: formatedCreatedAt,
+    },
   },
-  
-});
+  {
+    toJSON: {
+      getters: true,
+    },
+  }
+);
 
 const Task = model("Task", taskSchema);
 
