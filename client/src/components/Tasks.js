@@ -41,6 +41,7 @@ const Tasks = () => {
     };
 
     const taskInput = {
+      backgroundColor: '#ffffffCC',
       color: '#02151d',
     };
 
