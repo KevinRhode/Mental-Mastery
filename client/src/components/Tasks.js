@@ -23,6 +23,7 @@ const Tasks = () => {
       textShadow: '0 0 10px rgba(0, 0, 100, 0.5)',
       zIndex: 1,
       borderRadius: '10px',
+      border: '1px solid #1a1a1a',
       backgroundColor: 'white'
     };
 
@@ -43,6 +44,7 @@ const Tasks = () => {
     const taskInput = {
       backgroundColor: '#ffffffCC',
       color: '#02151d',
+      border: '1px solid #ccc'
     };
 
   const authContext = {
