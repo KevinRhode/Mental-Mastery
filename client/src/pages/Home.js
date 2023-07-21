@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       {showWelcome && ( // Conditional rendering based on showWelcome state
         <div
           style={{
@@ -40,7 +40,7 @@ const Home = () => {
         </div>
       )}
       <Link to="/family-dashboard">Go to Family Dashboard</Link>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
