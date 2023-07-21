@@ -10,6 +10,7 @@ export const QUERY_ME = gql`
   }
 `;
 
+<<<<<<< HEAD
 export const QUERY_ALL_TASKS = gql`
   query GetAllTasks {
     getAllTasks {
@@ -20,3 +21,16 @@ export const QUERY_ALL_TASKS = gql`
     }
   }
   `;
+=======
+
+export const GET_FAMILY_USER = gql`
+query Query($getFamilyUserById: ID!) {
+  getFamilyUserById(id: $getFamilyUserById) {
+    _id
+    birthDay
+    proNoun
+    religion
+  }
+}
+`;
+>>>>>>> main
