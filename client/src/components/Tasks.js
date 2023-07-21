@@ -8,7 +8,8 @@ import { QUERY_ALL_TASKS } from "../utils/queries";
 import cardBackgroundImage from '../assets/depositphotos_38252213-stock-photo-gold-leaf-on-buddha-sculpture.jpg';
 
 const Tasks = () => {
-  const [formState, setFormState] = useState({ taskname: "", location: "" });
+  const [formState, setFormState] = useState({ taskname: "", location: "" ,tasks:[]});
+
   const { loading, err, data } = useQuery(QUERY_ALL_TASKS);
   const [createTask, { error }] = useMutation(CREATE_TASK);
   const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -44,9 +45,14 @@ const Tasks = () => {
     event.preventDefault();
     try {
       const task = await createTask({
-        variables: { taskname: "Test", location: "Location" },
+        variables: { taskname:formState.taskname, location: "Location" },
         context: authContext,
       });
+      // setTaskList([...tasksList,[task.data.createTask]]);
+      console.log(task.data.createTask);
+      console.log(formState);
+      setFormState({...formState,tasks:[task.data.createTask],});
+      window.location.reload(); // reload the page
     } catch (e) {
       console.log(e);
     }
@@ -65,7 +71,8 @@ const Tasks = () => {
       <div className="Tasks" style={tasksStyle}>
         <div className="header">
           <form>
-            <input style={inputBox} placeholder="enter task" onChange={handleChange}></input>
+            <label htmlFor="taskname">Email address:</label>
+            <input placeholder="enter task" id="taskname" type="taskname" name="taskname" onChange={handleChange} ></input>
             <button style={submitButtonStyles} type="submit" onClick={handleFormSubmit}>
               add
             </button>
@@ -77,18 +84,23 @@ const Tasks = () => {
   } else{
     try {
       const { getAllTasks } = data;
+      // setFormState({...formState,tasks:{getAllTasks},});
+    
       return (
         <div className="Tasks" style={tasksStyle}>
           <div className="header">
             <form>
-              <input style={inputBox} placeholder="enter task" onChange={handleChange}></input>
-              <button style={submitButtonStyles} type="submit" onClick={handleFormSubmit}>
+              <input style={inputBox} placeholder="enter task" onChange={handleChange} name="taskname"></input>
+              <button style={submitButtonStyles} onClick={handleFormSubmit}>
                 add
               </button>
             </form>
           </div>
           <div className="content">
+          <ul style={{ listStyle:'none'}}
+        className="list-group">
             <TaskList results={getAllTasks} />
+            </ul>
           </div>
         </div>
       );
@@ -103,3 +115,5 @@ const Tasks = () => {
 
 
 export default Tasks;
+
+
