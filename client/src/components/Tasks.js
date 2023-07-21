@@ -22,7 +22,8 @@ const Tasks = () => {
       fontWeight: '800',
       textShadow: '0 0 10px rgba(0, 0, 100, 0.5)',
       zIndex: 1,
-      borderRadius: '10px'
+      borderRadius: '10px',
+      backgroundColor: 'white'
     };
 
     const submitButtonStyles = {
@@ -37,6 +38,10 @@ const Tasks = () => {
       padding: '5px',
       margin: '5px',
       textAlign: 'left',
+    };
+
+    const taskInput = {
+     
     };
 
   const authContext = {
@@ -97,7 +102,7 @@ const Tasks = () => {
               </button>
             </form>
           </div>
-          <div className="content">
+          <div className="content" style={taskInput}>
           <ul style={{ listStyle:'none'}}
         className="list-group">
             <TaskList results={getAllTasks} />
