@@ -22,6 +22,7 @@ const Tasks = () => {
       fontWeight: '800',
       textShadow: '0 0 10px rgba(0, 0, 100, 0.5)',
       zIndex: 1,
+      borderRadius: '10px'
     };
 
     const submitButtonStyles = {
