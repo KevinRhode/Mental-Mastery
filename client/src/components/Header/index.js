@@ -16,7 +16,7 @@ const Header = () => {
     backgroundPosition: 'center center',
     marginLeft: '75px',
     marginTop: '20px',
-    minHeight: '100px', // Set the minimum height here
+    minHeight: '150px', // Set the minimum height here
     backgroundColor: 'rgba(0, 0, 0, 0) !important',
   };
 

@@ -11,6 +11,12 @@ const FamilyComponent = () => {
   const [createFamilyUser, { error }] = useMutation(CREATE_FAMILY_USER);
   const token = Auth.loggedIn() ? Auth.getToken() : null;
 
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
   const handleInputChange = (event) => {
     const { value } = event.target;
     setNumberOfPeople(parseInt(value));
@@ -19,7 +25,7 @@ const FamilyComponent = () => {
   const handleCardInputChange = (index, event) => {
     const { name, value } = event.target;
     const updatedFamilyData = [...familyData];
-    const personId = updatedFamilyData[index]?.id || uuidv4(); // Get the person's existing ID or generate a new one
+    const personId = updatedFamilyData[index]?.id || uuidv4(); 
     updatedFamilyData[index] = {
       ...updatedFamilyData[index],
       id: personId,
@@ -28,33 +34,55 @@ const FamilyComponent = () => {
     setFamilyData(updatedFamilyData);
   };
 
-  const handleSubmit = () => {
-    for (const personData of familyData) {
-      const { id, name, dateOfBirth, pronoun, religiousPreference } = personData;
-
-      // Call the createFamilyUser mutation for each person in the family
-      createFamilyUser({
-        variables: {
-          input: {
-            id,
-            name,
-            dateOfBirth,
-            pronoun,
-            religiousPreference,
-          },
-        },
-      })
-        .then((response) => {
+  const handleSubmit = async () => {
+    try {
+      await Promise.all(
+        familyData.map(async (personData) => {
+          const { id, name, dateOfBirth, pronoun, religiousPreference } = personData;
+  
+          // Call the createFamilyUser mutation for each person in the family
+          const response = await createFamilyUser({
+            variables: {
+              input: {
+                id,
+                name,
+                dateOfBirth,
+                pronoun,
+                religiousPreference,
+              },
+            },
+          });
+  
           // Handle the response if needed
           console.log('Family member created:', response.data.createFamilyUser);
+          setShowModal(true);
         })
-        .catch((error) => {
-          // Handle any errors from the mutation
-          console.error('Error creating family member:', error);
-        });
+      );
+    } catch (error) {
+      // Handle any errors from the mutation
+      console.error('Error creating family member:', error);
     }
   };
+  const modalStyles = {
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    padding: '20px',
+    backgroundColor: 'white',
+    borderRadius: '8px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+  };
 
+  const modalBackdropStyles = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  };
+ 
   const goldLeafImageStyles = {
     backgroundImage: `url(${goldLeafImage})`,
     backgroundRepeat: 'repeat',
@@ -73,8 +101,12 @@ const FamilyComponent = () => {
 
   const labelStyles = {
     display: 'block',
-    marginBottom: '6px',
-    color: '#02151d',
+    padding: '10px',
+    boxShadow: '1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3)',
+    color: 'white',
+    fontWeight: '800',
+    textShadow: '0 0 10px rgba(0, 0, 100, 0.5)',
+    zIndex: '1',
   };
 
   const inputStyles = {
@@ -89,8 +121,6 @@ const FamilyComponent = () => {
     backgroundColor: '#1b5060',
     padding: '10px',
     color: 'white',
-    marginBottom: '10px',
-    borderRadius: '5px',
   };
 
   const submitButtonStyles = {
@@ -100,6 +130,7 @@ const FamilyComponent = () => {
     color: 'white',
     borderRadius: '4px',
     cursor: 'pointer',
+    float: 'right', 
   };
 
   const renderCards = () => {
@@ -177,9 +208,19 @@ const FamilyComponent = () => {
         </label>
       </div>
       {renderCards()}
+      {numberOfPeople > 0 && (
       <button style={submitButtonStyles} onClick={handleSubmit}>
         Submit
       </button>
+       )}
+      {showModal && (
+        <div style={modalBackdropStyles} onClick={handleModalClose}>
+          <div style={modalStyles}>
+            <h3>Your family members were added!</h3>
+            {/* Add any additional content for the modal here */}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
