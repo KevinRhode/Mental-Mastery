@@ -28,7 +28,7 @@ const typeDefs = gql`
 
   type Query {
     me: Family
-    getAllTasks: [Task!]!
+    getAllTasks: [Task]
     getFamilyUserById(id: ID!): FamilyUser
   }
 
