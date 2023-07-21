@@ -17,6 +17,7 @@ const Tasks = () => {
   const tasksStyle = {
       backgroundImage: `url(${cardBackgroundImage})`,
       padding: '20px',
+      marginTop: '40px',
       boxShadow: '1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3)',
       color: 'white',
       fontWeight: '800',
@@ -25,7 +26,6 @@ const Tasks = () => {
       borderRadius: '10px',
       border: '1px solid #1a1a1a',
       backgroundColor: 'white',
-      margin: 'auto'
     };
 
     const submitButtonStyles = {
@@ -44,7 +44,7 @@ const Tasks = () => {
 
     const taskInput = {
       margin:'auto',
-      padding: 'auto',
+      paddingTop: '10px',
       backgroundColor: '#ffffffCC',
       color: '#02151d',
       border: '1px solid #ccc',
