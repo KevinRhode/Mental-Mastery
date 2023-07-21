@@ -16,14 +16,15 @@ const Home = () => {
       {showWelcome && ( // Conditional rendering based on showWelcome state
         <div
           style={{
-            backgroundColor: "rgba(255, 255, 255, 0.7)",
+            backgroundColor: "rgba(0, 0, 0, 0.6)",
             paddingTop: "50px",
           }}
         >
           <div
             style={{
+
               fontSize: "4rem",
-              color: "#02151d",
+              color: "#FFFFFF",
               textAlign: "center",
               marginTop: "-20px",
               padding: "20px",
@@ -34,7 +35,7 @@ const Home = () => {
           >
             Welcome to Mental Mastery! <br /> Unlock Your Mind. Master Your
             Tasks. <br />
-            
+
             Click to Begin
           </div>
         </div>
