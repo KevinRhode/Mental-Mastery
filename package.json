@@ -19,5 +19,8 @@
   "dependencies": {
     "font-awesome": "^4.7.0",
     "react-router-dom": "^6.14.2"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
