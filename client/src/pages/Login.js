@@ -35,6 +35,7 @@ function Login(props) {
 
   return (
     <div className="login-background">
+      <div className="background-blur" />
       <div className="container my-1">
         <div className="card">
           <Link to="/signup" className="signup-link">
@@ -79,16 +80,26 @@ function Login(props) {
         </div>
       </div>
       <style jsx>{`
-  .login-background {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url(${backgroundImage});
-    background-size: cover;
-    background-position: center;
-  }
+       .login-background {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+        .background-blur {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url(${backgroundImage});
+          background-size: cover;
+          background-position: center;
+          filter: blur(15px);
+          z-index: -1;
+        }
 
   .container {
     max-width: 400px;
@@ -98,12 +109,13 @@ function Login(props) {
   .card {
     background-image: url(${cardBackgroundImage});
     border-radius: 10px;
+    top margin: 40px;
     padding: 20px;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3);
     color: white;
     font-weight: 800;
-    text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
-    z-index: 1;
+    text-shadow: 0 0 8px rgba(0,0,100, 100);
+    
   }
 
   .signup-link {
@@ -126,6 +138,7 @@ function Login(props) {
   }
 
   .error-message {
+    highlight: red
     text-align: center;
     margin-top: 10px;
     font-weight: bold;
@@ -133,10 +146,14 @@ function Login(props) {
   }
 
   .error-text {
-    color: Black;
+    color: black;
+    text-align: center;
+    font-size: 3rem;
     font-weight: bold;
-    text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
+    text-shadow: 3px 3px 8px rgba(255, 215, 0, 0.5); /* Adjust the shadow color and blur for gold effect */
   }
+  
+  
 
   .submit-button {
     width: 100%;

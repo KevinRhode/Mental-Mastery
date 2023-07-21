@@ -1,19 +1,46 @@
-import React from "react";
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Home = () => {
-  // const { loading, data } = useQuery();
-  // const thoughts = data?.thoughts || [];
-  // example
+  const [showWelcome, setShowWelcome] = useState(true);
+
+  const handleDashboardClick = () => {
+    setShowWelcome(false);
+  };
+
   return (
     <>
-     
-      <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.7)', paddingTop: '50px' }}> {/* Add paddingTop to create space */}
-        <div style={{ fontSize: '4rem', color: '#02151d', textAlign: 'center', marginTop: '-20px', padding: '20px', marginBottom: '50px' }}>  
-          Welcome to Mental Mastery! <br/>Unlock Your Mind. Master Your Tasks.
+      {/* <Header /> */}
+      {showWelcome && ( // Conditional rendering based on showWelcome state
+        <div
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0.7)",
+            paddingTop: "50px",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "4rem",
+              color: "#02151d",
+              textAlign: "center",
+              marginTop: "-20px",
+              padding: "20px",
+              marginBottom: "50px",
+              cursor: "pointer", // Add cursor pointer to indicate the message is clickable
+            }}
+            onClick={handleDashboardClick} // Call handleDashboardClick on click
+          >
+            Welcome to Mental Mastery! <br /> Unlock Your Mind. Master Your
+            Tasks. <br />
+            
+            Click to Begin
+          </div>
         </div>
-      </div>
+      )}
+      <Link to="/family-dashboard">Go to Family Dashboard</Link>
+      {/* <Footer /> */}
     </>
   );
 };
