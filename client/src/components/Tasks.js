@@ -24,7 +24,8 @@ const Tasks = () => {
       zIndex: 1,
       borderRadius: '10px',
       border: '1px solid #1a1a1a',
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+      margin: 'auto'
     };
 
     const submitButtonStyles = {
@@ -42,9 +43,12 @@ const Tasks = () => {
     };
 
     const taskInput = {
+      margin:'auto',
+      padding: 'auto',
       backgroundColor: '#ffffffCC',
       color: '#02151d',
-      border: '1px solid #ccc'
+      border: '1px solid #ccc',
+      lineHeight: '1.5em'
     };
 
   const authContext = {
