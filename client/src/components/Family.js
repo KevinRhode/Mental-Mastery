@@ -3,15 +3,19 @@ import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { CREATE_FAMILY_USER } from '../utils/mutations';
 import goldLeafImage from '../assets/depositphotos_38252213-stock-photo-gold-leaf-on-buddha-sculpture.jpg';
+import { v4 as uuidv4 } from 'uuid';
 
 const FamilyComponent = () => {
   const [numberOfPeople, setNumberOfPeople] = useState(0);
   const [familyData, setFamilyData] = useState([]);
   const [createFamilyUser, { error }] = useMutation(CREATE_FAMILY_USER);
   const token = Auth.loggedIn() ? Auth.getToken() : null;
-  // const authContext = {
-  //   headers:{Authorization: `Bearer ${token}`}
-  // };
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
 
   const handleInputChange = (event) => {
     const { value } = event.target;
@@ -21,47 +25,128 @@ const FamilyComponent = () => {
   const handleCardInputChange = (index, event) => {
     const { name, value } = event.target;
     const updatedFamilyData = [...familyData];
+    const personId = updatedFamilyData[index]?.id || uuidv4(); 
     updatedFamilyData[index] = {
       ...updatedFamilyData[index],
+      id: personId,
       [name]: value,
     };
     setFamilyData(updatedFamilyData);
   };
-  const createFamily = () => {};
+
+  const handleSubmit = async () => {
+    try {
+      await Promise.all(
+        familyData.map(async (personData) => {
+          const { id, name, dateOfBirth, pronoun, religiousPreference } = personData;
+  
+          // Call the createFamilyUser mutation for each person in the family
+          const response = await createFamilyUser({
+            variables: {
+              input: {
+                id,
+                name,
+                dateOfBirth,
+                pronoun,
+                religiousPreference,
+              },
+            },
+          });
+  
+          // Handle the response if needed
+          console.log('Family member created:', response.data.createFamilyUser);
+          setShowModal(true);
+        })
+      );
+    } catch (error) {
+      // Handle any errors from the mutation
+      console.error('Error creating family member:', error);
+    }
+  };
+  const modalStyles = {
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    padding: '20px',
+    backgroundColor: 'white',
+    borderRadius: '8px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+  };
+
+  const modalBackdropStyles = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  };
+ 
+  const goldLeafImageStyles = {
+    backgroundImage: `url(${goldLeafImage})`,
+    backgroundRepeat: 'repeat',
+    backgroundSize: '100%',
+  };
+
+  const cardStyles = {
+    border: '1px solid #1b5060',
+    padding: '10px',
+    margin: '10px',
+    borderRadius: '5px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    ...goldLeafImageStyles,
+    color: '#02151d !important',
+  };
+
+  const labelStyles = {
+    display: 'block',
+    padding: '10px',
+    boxShadow: '1px 2px 4px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.3)',
+    color: 'white',
+    fontWeight: '800',
+    textShadow: '0 0 10px rgba(0, 0, 100, 0.5)',
+    zIndex: '1',
+  };
+
+  const inputStyles = {
+    width: '100%',
+    padding: '6px 10px',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    boxSizing: 'border-box',
+  };
+
+  const labelContainerStyles = {
+    backgroundColor: '#1b5060',
+    padding: '10px',
+    color: 'white',
+  };
+
+  const submitButtonStyles = {
+    marginTop: '10px',
+    padding: '8px 16px',
+    backgroundColor: '#1b5060',
+    color: 'white',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    float: 'right', 
+  };
 
   const renderCards = () => {
-    const goldLeafImage = require('../assets/goldLeaf.jpg').default;
-    const cardStyles = {
-      border: '1px solid #1b5060',
-      padding: '10px',
-      margin: '10px',
-      borderRadius: '5px',
-      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-      backgroundImage: `url(${goldLeafImage})`,
-      backgroundRepeat: 'repeat', // Tile the image
-      backgroundSize: '100%', // Adjust the size to your preference
-      color: '#02151d !important',
-
-    };
-
-    const labelStyles = {
-      display: 'block',
-      marginBottom: '6px',
-    };
-
-    const inputStyles = {
-      width: '100%',
-      padding: '6px 10px',
-      border: '1px solid #ccc',
-      borderRadius: '4px',
-      boxSizing: 'border-box',
-    };
-
     const cards = [];
     for (let i = 0; i < numberOfPeople; i++) {
+      const personId = uuidv4();
+      const cardData = {
+        id: personId,
+        name: '',
+        dateOfBirth: '',
+        pronoun: '',
+        religiousPreference: '',
+      };
       cards.push(
         <div key={i} style={cardStyles}>
-          <h3 style={{color: '#02151d', backgroundColor: '#ffffffCC'}}>Person {i + 1}</h3>
+          <h3 style={{ color: '#02151d', backgroundColor: '#ffffffCC' }}>Person {i + 1}</h3>
           <label style={labelStyles}>
             Name:
             <input
@@ -84,7 +169,7 @@ const FamilyComponent = () => {
             Pronoun:
             <input
               type="text"
-              name="name"
+              name="pronoun"
               style={inputStyles}
               onChange={(event) => handleCardInputChange(i, event)}
             />
@@ -93,31 +178,20 @@ const FamilyComponent = () => {
             Religious Preference:
             <input
               type="text"
-              name="name"
+              name="religiousPreference"
               style={inputStyles}
               onChange={(event) => handleCardInputChange(i, event)}
             />
           </label>
-          {/* Add more fields as needed */}
         </div>
       );
     }
     return cards;
   };
 
-  const labelContainerStyles = {
-    backgroundColor: '#1b5060',
-    padding: '10px',
-    color: 'white',
-    marginBottom: '10px',
-    borderRadius: '5px',
-  };
-
- const containerStyles = {
-    marginTop: '100px', 
-    backgroundImage: `url(${goldLeafImage})`, 
-    backgroundRepeat: 'repeat', 
-    backgroundSize: '100%',
+  const containerStyles = {
+    marginTop: '100px',
+    ...goldLeafImageStyles,
   };
 
   return (
@@ -134,6 +208,19 @@ const FamilyComponent = () => {
         </label>
       </div>
       {renderCards()}
+      {numberOfPeople > 0 && (
+      <button style={submitButtonStyles} onClick={handleSubmit}>
+        Submit
+      </button>
+       )}
+      {showModal && (
+        <div style={modalBackdropStyles} onClick={handleModalClose}>
+          <div style={modalStyles}>
+            <h3>Your family members were added!</h3>
+            {/* Add any additional content for the modal here */}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

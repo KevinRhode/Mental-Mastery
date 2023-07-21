@@ -21,23 +21,23 @@ const typeDefs = gql`
 
   type FamilyUser {
     _id: ID!    
-    birthDay: String!
+    dateOfBirth: String!
     proNoun: String
     religion: String
   }
 
   type Query {
     me: Family
-    getAllTasks: [Task!]!
+    getAllTasks: [Task]
     getFamilyUserById(id: ID!): FamilyUser
   }
 
   type Mutation {    
     createTask(taskname: String!, location: String!): Task
-    createFamilyUser(birthDay: String!, proNoun: String, religion: String): FamilyUser
+    createFamilyUser(dateOfBirth: String!, proNoun: String, religion: String): FamilyUser
    
     updateTask(taskId:ID,taskname: String, location: String, date: String): Task
-    updateFamilyUser(familyUserId:ID, birthDay: String, proNoun: String, religion: String): FamilyUser
+    updateFamilyUser(familyUserId:ID, dateOfBirth: String, proNoun: String, religion: String): FamilyUser
    
     deleteTask(id: ID!): Task
     deleteFamilyUser(id: ID!): FamilyUser

@@ -7,7 +7,7 @@ const { Schema, model } = require('mongoose');
 
 const familyuserSchema = new Schema({
 
-    birthDay: {
+    dateOfBirth: {
 
         type: Date,
         required: true,

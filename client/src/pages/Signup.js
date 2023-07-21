@@ -38,7 +38,10 @@ function Signup(props) {
       [name]: value,
     });
   };
-
+  // const handleButtonClick = () => {
+  //   clickSound.play();
+  //   handleFormSubmit();
+  // };
   return (
     <div className="login-background">
       <div className="background-blur" />
@@ -52,11 +55,6 @@ function Signup(props) {
           <h2 className="login-heading">Signup</h2>
           <form onSubmit={handleFormSubmit}>
             {/* ... */}
-            {signupError && (
-              <div className="error-message">
-                <p className="error-text">{signupError}</p>
-              </div>
-            )}
             <div className="form-group">
               <label htmlFor="lastName">Last Name:</label>
               <input
@@ -93,6 +91,11 @@ function Signup(props) {
             <div className="form-group">
               <button type="submit" className="submit-button">Submit</button>
             </div>
+            {signupError && (
+              <div className="error-message">
+                <p className="error-text">{signupError}</p>
+              </div>
+            )}
           </form>
         </div>
       </div>
@@ -121,12 +124,14 @@ function Signup(props) {
         .container {
           max-width: 400px;
           width: 100%;
+          top margin: 40px;
         }
 
         .card {
           background-image: url(${cardBackgroundImage});
           border-radius: 10px;
           padding: 20px;
+          top margin: 40px;
           box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3);
           color: white;
           font-weight: 800; /* Increase the font-weight value for a bolder appearance */
@@ -151,7 +156,21 @@ function Signup(props) {
           width: 100%;
           padding: 5px;
         }
-
+        .error-message {
+          highlight: red
+          text-align: center;
+          margin-top: 10px;
+          font-weight: bold;
+          text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
+        }
+        .error-text {
+          color: black;
+          text-align: center;
+          font-size: 3rem;
+          font-weight: bold;
+          text-shadow: 3px 3px 8px rgba(255, 215, 0, 0.5); /* Adjust the shadow color and blur for gold effect */
+        }
+      
         .submit-button {
           width: 100%;
         }
