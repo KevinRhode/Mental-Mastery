@@ -58,17 +58,17 @@ export const UPDATE_TASK = gql`
 
 export const CREATE_FAMILY_USER = gql`
   mutation CreateFamilyUser(
-    $birthDay: String!
+    $dateOfBirth: String!
     $proNoun: String
     $religion: String
   ) {
     createFamilyUser(
-      birthDay: $birthDay
+      dateOfBirth: $dateOfBirth
       proNoun: $proNoun
       religion: $religion
     ) {
       _id
-      birthDay
+      dateOfBirth
       proNoun
       religion
     }
@@ -77,18 +77,18 @@ export const CREATE_FAMILY_USER = gql`
 export const UPDATE_FAMILY_USER = gql`
   mutation UpdateFamilyUser(
     $familyUserId: ID
-    $birthDay: String
+    $dateOfBirth: String
     $proNoun: String
     $religion: String
   ) {
     updateFamilyUser(
       familyUserId: $familyUserId
-      birthDay: $birthDay
+      dateOfBirth: $dateOfBirth
       proNoun: $proNoun
       religion: $religion
     ) {
       _id
-      birthDay
+      dateOfBirth
       proNoun
       religion
     }
