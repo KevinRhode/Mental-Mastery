@@ -8,19 +8,24 @@ const Header = () => {
     event.preventDefault();
     Auth.logout();
   };
+  
   const navButtonStyle = {
-    margin: "0 40px",
+    margin: "0 8px", 
+    padding: "10px 20px",
     color: "white",
     textDecoration: "none",
+    backgroundColor: "rgba(0, 0, 0, 0.7)", 
+    borderRadius: "4px", 
   };
+
   const headerStyles = {
     backgroundImage: `url(${logoImage})`,
-    backgroundRepeat: "no-repeat", // Tile the image
-    backgroundSize: "50%", // Adjust the size to your preference
+    backgroundRepeat: "no-repeat", 
+    backgroundSize: "50%", 
     backgroundPosition: "center center",
     marginLeft: "75px",
     marginTop: "20px",
-    minHeight: "100px", // Set the minimum height here
+    minHeight: "100px", 
     backgroundColor: "rgba(0, 0, 0, 0) !important",
   };
 
@@ -35,7 +40,7 @@ const Header = () => {
             <h1 className="m-0"></h1>
           </Link>
           {Auth.loggedIn() ? (
-            <>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <Link to="/" style={navButtonStyle}>
                 Dashboard
               </Link>
@@ -49,16 +54,16 @@ const Header = () => {
                 Tasks
               </Link>            
               <Link style={navButtonStyle} onClick={Auth.logout}>Logout</Link>
-            </>
+            </div>
           ) : (
-            <>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <Link to="/login" style={navButtonStyle}>
                 Login
               </Link>
               <Link to="/signup" style={navButtonStyle}>
                 Sign Up
               </Link>
-            </>
+            </div>
           )}
 
           <p className="m-0"></p>

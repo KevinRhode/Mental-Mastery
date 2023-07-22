@@ -126,6 +126,7 @@ function Login(props) {
 
   .login-heading {
     text-align: center;
+    color: #02151d !important;
   }
 
   .form-group {
@@ -157,6 +158,9 @@ function Login(props) {
 
   .submit-button {
     width: 100%;
+    background-color: #1b5060 !important;
+    color: white;
+    padding: 8px 16px;
   }
 `}</style>
     </div>
