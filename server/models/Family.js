@@ -27,12 +27,12 @@ const familySchema = new Schema({
     type: String,
   },
 
-  familyuserIds: [{
-    type: String,
+  familyUsers: [{
+    type: Schema.Types.ObjectId,
     ref:"FamilyUser"
   }],
 
-  savedtasks: [{
+  savedTasks: [{
     type: Schema.Types.ObjectId,
     ref: "Task"
   }],
