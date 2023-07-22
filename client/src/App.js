@@ -79,7 +79,7 @@ function App() {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '-90px',
+    // marginTop: '-90px',
   };
 
   const footerStyles = {
@@ -92,9 +92,9 @@ function App() {
     <div style={appStyles}>
       <ApolloProvider client={client}>
         <Header /> {/* Render the Header component here */}
-        <div style={headerStyles}>
-          <div style={navButtonsStyles}>
-            <Link to="/login" style={navButtonStyle}>
+        {/* <div style={headerStyles}> */}
+          {/* <div style={navButtonsStyles}> */}
+            {/* <Link to="/login" style={navButtonStyle}>
               Login
             </Link>
             <Link to="/signup" style={navButtonStyle}>
@@ -114,9 +114,9 @@ function App() {
             </Link>
             <Link to="/task" style={navButtonStyle}>
               Tasks
-            </Link>
-          </div>
-        </div>
+            </Link> */}
+          {/* </div> */}
+        {/* </div> */}
         <div style={contentStyles}>
           <Routes>
             <Route path="/" element={<Home />} />
