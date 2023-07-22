@@ -79,7 +79,7 @@ function App() {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '-90px',
+    // marginTop: '-90px',
   };
 
   const footerStyles = {
