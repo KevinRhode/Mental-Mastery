@@ -23,7 +23,7 @@ const Home = () => {
           <div
             style={{
 
-              fontSize: "4rem",
+              fontSize: "2rem",
               color: "#FFFFFF",
               textAlign: "center",
               marginTop: "-20px",

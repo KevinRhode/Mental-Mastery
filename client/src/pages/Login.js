@@ -121,7 +121,7 @@ function Login(props) {
     top margin: 40px;
     padding: 20px;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3);
-    color: white;
+    color: white ;
     font-weight: 800;
     text-shadow: 0 0 8px rgba(0,0,100, 100);
     
