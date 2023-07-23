@@ -21,18 +21,6 @@ function FamilyUserComponent() {
         return <p>Loading User information...</p>;
     }
 
-
-    // ReactDOM.render(<Tasks />, document.getElementById('root'));
-
-
-
-    // const renderPage = () => {
-    //     return (<Tasks />);
-
-
-    // };
-
-
     return (
         <div>
             <div>
