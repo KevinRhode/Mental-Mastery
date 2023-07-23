@@ -135,6 +135,11 @@ const FamilyComponent = () => {
     float: "right",
   };
 
+  const backgroundBlur ={
+    filter:' blur(15px)',
+    zIndex: '-1',
+  }
+
   const renderCards = () => {
     const cards = [];
     for (let i = 0; i < numberOfPeople; i++) {
@@ -148,7 +153,7 @@ const FamilyComponent = () => {
       };
       cards.push(
         <div key={i} style={cardStyles}>
-          <h3 style={{ color: "#02151d", backgroundColor: "#ffffffCC" }}>
+          <h3 style={{ color: "#02151d", backgroundColor: "#ffffffCC" }}    className="backgroundBlur">
             Person {i + 1}
           </h3>
           <label style={labelStyles}>
