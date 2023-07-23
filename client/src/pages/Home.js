@@ -39,7 +39,7 @@ const Home = () => {
           </div>
         </div>
       )}
-      <Link to="/family-dashboard">Go to Family Dashboard</Link>
+      {/* <Link to="/family-dashboard">Go to Family Dashboard</Link> */}
       {/* <Footer /> */}
     </>
   );

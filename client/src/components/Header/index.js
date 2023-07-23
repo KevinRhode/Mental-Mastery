@@ -30,10 +30,7 @@ const Header = () => {
       className="bg-primary text-light mb-4 py-3 flex-row align-center"
     >
       <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <div>
-          <Link className="text-light" to="/">
-            <h1 className="m-0"></h1>
-          </Link>
+        <div>         
           {Auth.loggedIn() ? (
             <>
               <Link to="/" style={navButtonStyle}>
@@ -42,9 +39,7 @@ const Header = () => {
               <Link to="/family" style={navButtonStyle}>
                 Family Size
               </Link>
-              <Link to="/user" style={navButtonStyle}>
-                User
-              </Link>
+             
               <Link to="/task" style={navButtonStyle}>
                 Tasks
               </Link>            
