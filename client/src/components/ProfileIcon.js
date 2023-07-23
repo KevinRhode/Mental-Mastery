@@ -22,22 +22,17 @@ function ProfileIcon(props){
         const {id} = e.target;
         navigate(`/familyuser/${id}`);
     }
-    // useEffect(() => {
-      // Call the navigate function inside the useEffect hook
-      // const linkToFamilyUser = (id) => {
-      //   navigate(`/familyuser/${id}`);
-      // };
-  
-      // Call the function when the component mounts
-    //   linkToFamilyUser(props.profileId);
-    // }, [props.profileId, navigate]);
+   
     try {
-      const {profileId} = props.props;
+      const {_id:profileId} = props.props;
 
       return (
         <>
-          <div style={{backgroundColor:"#FFF"}} id={profileId} onClick={linkToFamilyUser}>
-              <img src={logo} style={tinyLogo} className='profileIcon' alt='profileIcon'/>
+          {/* <Link to='/familyuser'>
+          <img src={logo} style={tinyLogo} className='profileIcon' alt='profileIcon'/>
+          </Link> */}
+          <div style={{backgroundColor:"#FFF"}}  onClick={linkToFamilyUser}>
+              <img src={logo} style={tinyLogo} id={profileId} className='profileIcon' alt='profileIcon'/>
           </div>
           
         </>

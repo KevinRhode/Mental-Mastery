@@ -35,7 +35,7 @@ const Header = () => {
       className="bg-primary text-light mb-4 py-3 flex-row align-center"
     >
       <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <div>         
+        {/* <div>         
           {Auth.loggedIn() ? (
             <div style={{ display: "flex", alignItems: "center" }}>
               <Link to="/" style={navButtonStyle}>
@@ -62,7 +62,7 @@ const Header = () => {
           )}
 
           <p className="m-0"></p>
-        </div>
+        </div> */}
         {/* Add the navigation links here */}
         <div>{/* ... */}</div>
       </div>
