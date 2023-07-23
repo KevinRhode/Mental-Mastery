@@ -7,6 +7,9 @@ import logo from '../assets/profile-circle-svgrepo-com.svg';
     const tinyLogo={
       width: 50,
       height: 50,
+      backgroundColor:'#FFF',
+      cursor:'pointer',
+      borderRadius: '1rem'
     };
     const reglogo= {
       width: 66,
@@ -31,7 +34,7 @@ function ProfileIcon(props){
           {/* <Link to='/familyuser'>
           <img src={logo} style={tinyLogo} className='profileIcon' alt='profileIcon'/>
           </Link> */}
-          <div style={{backgroundColor:"#FFF"}}  onClick={linkToFamilyUser}>
+          <div onClick={linkToFamilyUser}>
               <img src={logo} style={tinyLogo} id={profileId} className='profileIcon' alt='profileIcon'/>
           </div>
           
@@ -41,7 +44,7 @@ function ProfileIcon(props){
       
       return (
         <>
-          <div style={{backgroundColor:"#FFF"}} id={props} onClick={linkToFamilyUser}>
+          <div id={props} onClick={linkToFamilyUser}>
               <img src={logo} style={tinyLogo} className='profileIcon' alt='profileIcon'/>
           </div>
           
