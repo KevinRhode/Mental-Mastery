@@ -106,8 +106,8 @@ function App() {
             <Link to="/family" style={navButtonStyle}>
               Family Size
             </Link>
-            <Link to="/user" style={navButtonStyle}>
-              User
+            <Link to="/familyuser" style={navButtonStyle}>
+              FamilyUser
             </Link>
             <Link to="/task" style={navButtonStyle}>
               Tasks
