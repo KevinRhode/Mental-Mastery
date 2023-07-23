@@ -41,7 +41,7 @@ function FamilyUserComponent() {
                                     </li>
                                     <li className="list-group-item">
                                         <p>
-                                            <strong>Birthday:</strong> {familyUser.birthDay}
+                                            <strong>Birthday:</strong> {familyUser.dateOfBirth}
                                         </p>
                                     </li>
                                     <li className="list-group-item">

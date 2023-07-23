@@ -40,7 +40,7 @@ const FamilyComponent = () => {
     try {
       await Promise.all(
         familyData.map(async (personData) => {
-          const { id, name, dateOfBirth, pronoun, religiousPreference } =
+          const { id, name, dateOfBirth, proNoun, religiousPreference:religion } =
             personData;
 
           // Call the createFamilyUser mutation for each person in the family
@@ -49,8 +49,8 @@ const FamilyComponent = () => {
               id,
               name,
               dateOfBirth,
-              pronoun,
-              religiousPreference,
+              proNoun,
+              religion,
             },
           });
 
@@ -178,7 +178,7 @@ const FamilyComponent = () => {
             Pronoun:
             <input
               type="text"
-              name="pronoun"
+              name="proNoun"
               style={inputStyles}
               onChange={(event) => handleCardInputChange(i, event)}
             />

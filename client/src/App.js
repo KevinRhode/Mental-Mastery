@@ -17,8 +17,10 @@ import Tasks from './components/Tasks';
 import TaskDash from './components/testDash';
 import project3background from './assets/Project3Background.svg';
 import Footer from './components/Footer/index';
+import Nav from './components/Nav'
 
 import FamilyUser from './components/FamilyUser';
+import Dashboard from './pages/Dashboard';
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -92,6 +94,7 @@ function App() {
     <div style={appStyles}>
       <ApolloProvider client={client}>
         <Header /> {/* Render the Header component here */}
+        <Nav/>
         {/* <div style={headerStyles}> */}
           {/* <div style={navButtonsStyles}> */}
             {/* <Link to="/login" style={navButtonStyle}>
@@ -120,6 +123,7 @@ function App() {
         <div style={contentStyles}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path='/dashboard' element={<Dashboard/>}/>
             <Route path="/family" element={<Family />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
