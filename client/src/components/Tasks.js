@@ -17,11 +17,15 @@ const Tasks = () => {
   const tasksStyle = {
       backgroundImage: `url(${cardBackgroundImage})`,
       padding: '20px',
+      marginTop: '40px',
       boxShadow: '1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3)',
       color: 'white',
       fontWeight: '800',
       textShadow: '0 0 10px rgba(0, 0, 100, 0.5)',
       zIndex: 1,
+      borderRadius: '10px',
+      border: '1px solid #1a1a1a',
+      backgroundColor: 'white',
     };
 
     const submitButtonStyles = {
@@ -36,6 +40,15 @@ const Tasks = () => {
       padding: '5px',
       margin: '5px',
       textAlign: 'left',
+    };
+
+    const taskInput = {
+      margin:'auto',
+      paddingTop: '10px',
+      backgroundColor: '#ffffffCC',
+      color: '#02151d',
+      border: '1px solid #ccc',
+      lineHeight: '1.5em'
     };
 
   const authContext = {
@@ -96,7 +109,7 @@ const Tasks = () => {
               </button>
             </form>
           </div>
-          <div className="content">
+          <div className="content" style={taskInput}>
           <ul style={{ listStyle:'none'}}
         className="list-group">
             <TaskList results={getAllTasks} />
