@@ -17,8 +17,10 @@ import Tasks from './components/Tasks';
 import TaskDash from './components/testDash';
 import project3background from './assets/Project3Background.svg';
 import Footer from './components/Footer/index';
+import Nav from './components/Nav'
 
 import FamilyUser from './components/FamilyUser';
+import Dashboard from './pages/Dashboard';
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -79,7 +81,7 @@ function App() {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '-90px',
+    // marginTop: '-90px',
   };
 
   const footerStyles = {
@@ -92,9 +94,10 @@ function App() {
     <div style={appStyles}>
       <ApolloProvider client={client}>
         <Header /> {/* Render the Header component here */}
-        <div style={headerStyles}>
-          <div style={navButtonsStyles}>
-            <Link to="/login" style={navButtonStyle}>
+        <Nav/>
+        {/* <div style={headerStyles}> */}
+          {/* <div style={navButtonsStyles}> */}
+            {/* <Link to="/login" style={navButtonStyle}>
               Login
             </Link>
             <Link to="/signup" style={navButtonStyle}>
@@ -106,20 +109,21 @@ function App() {
             <Link to="/family" style={navButtonStyle}>
               Family Size
             </Link>
-            <Link to="/user" style={navButtonStyle}>
-              User
+            <Link to="/familyuser" style={navButtonStyle}>
+              FamilyUser
             </Link>
             <Link to="/task" style={navButtonStyle}>
               Tasks
             </Link>
             <Link to="/task" style={navButtonStyle}>
               Tasks
-            </Link>
-          </div>
-        </div>
+            </Link> */}
+          {/* </div> */}
+        {/* </div> */}
         <div style={contentStyles}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path='/dashboard' element={<Dashboard/>}/>
             <Route path="/family" element={<Family />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />

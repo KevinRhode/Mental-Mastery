@@ -5,7 +5,20 @@ export const QUERY_ME = gql`
     me {
       _id
       username
-      email      
+      email
+      image
+      savedTasks {
+        _id
+        taskname
+        location
+        date
+      }
+      familyUsers {
+        _id
+        dateOfBirth
+        proNoun
+        religion
+      }
     }
   }
 `;

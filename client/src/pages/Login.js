@@ -43,7 +43,7 @@ function Login(props) {
           </Link>
 
           <h2 className="login-heading">Login</h2>
-          
+
           <form onSubmit={handleFormSubmit}>
             <div className="form-group">
               <label htmlFor="email">Email address:</label>
@@ -67,7 +67,7 @@ function Login(props) {
                 onChange={handleChange}
               />
             </div>
-            
+
             <div className="form-group">
               <button type="submit" className="submit-button">Submit</button>
             </div>
@@ -100,6 +100,15 @@ function Login(props) {
           filter: blur(15px);
           z-index: -1;
         }
+  .login-background {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+  
+    background-size: cover;
+    background-position: center;
+  }
 
   .container {
     max-width: 400px;
@@ -112,7 +121,7 @@ function Login(props) {
     top margin: 40px;
     padding: 20px;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3);
-    color: white;
+    color: white ;
     font-weight: 800;
     text-shadow: 0 0 8px rgba(0,0,100, 100);
     
@@ -126,6 +135,7 @@ function Login(props) {
 
   .login-heading {
     text-align: center;
+    color: #02151d !important;
   }
 
   .form-group {
@@ -157,6 +167,9 @@ function Login(props) {
 
   .submit-button {
     width: 100%;
+    background-color: #1b5060 !important;
+    color: white;
+    padding: 8px 16px;
   }
 `}</style>
     </div>

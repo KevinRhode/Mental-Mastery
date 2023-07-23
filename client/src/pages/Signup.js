@@ -4,8 +4,6 @@ import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 
-import backgroundImage from '../assets/ori_52043_51102fd328b18d2ccf3aaa0dd7232590303d15fe_golden-clock-on-turquoise-background-steampunk.jpg';
-
 import cardBackgroundImage from '../assets/depositphotos_38252213-stock-photo-gold-leaf-on-buddha-sculpture.jpg';
 
 function Signup(props) {
@@ -114,7 +112,6 @@ function Signup(props) {
           left: 0;
           width: 100%;
           height: 100%;
-          background-image: url(${backgroundImage});
           background-size: cover;
           background-position: center;
           filter: blur(15px);
@@ -146,6 +143,8 @@ function Signup(props) {
 
         .login-heading {
           text-align: center;
+          color: #02151d !important;
+
         }
 
         .form-group {
@@ -173,7 +172,9 @@ function Signup(props) {
       
         .submit-button {
           width: 100%;
-        }
+          background-color: #1b5060 !important;
+          color: white;
+          padding: 8px 16px;        }
       `}</style>
     </div>
   );

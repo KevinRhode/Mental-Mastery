@@ -8,20 +8,20 @@ const typeDefs = gql`
     email: String!
     password: String!
     image: String
-    familyUserIds: [FamilyUser!]!
+    familyUsers: [FamilyUser]
     savedTasks: [Task]
   }
 
   type Task {
     _id: ID!
-    taskname: String!
-    location: String!
+    taskname: String
+    location: String
     date: String
   }
 
   type FamilyUser {
-    _id: ID!    
-    dateOfBirth: String!
+    _id: ID!
+    dateOfBirth: String
     proNoun: String
     religion: String
   }
