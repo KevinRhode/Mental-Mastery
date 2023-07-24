@@ -1,0 +1,63 @@
+[
+    {
+      "taskname": "Dust Shelves",
+      "location": "Living Room"
+    },
+    {
+      "taskname": "Clean Mirrors",
+      "location": "Bathroom"
+    },
+    {
+      "taskname": "Water Plants",
+      "location": "Sunroom"
+    },
+    {
+      "taskname": "Organize Books",
+      "location": "Study"
+    },
+    {
+      "taskname": "Sweep Kitchen",
+      "location": "Kitchen"
+    },
+    {
+      "taskname": "Make Bed",
+      "location": "Master Bedroom"
+    },
+    {
+      "taskname": "Empty Trash",
+      "location": "Guest Room"
+    },
+    {
+      "taskname": "Wipe Counters",
+      "location": "Kitchen"
+    },
+    {
+      "taskname": "Sort Mail",
+      "location": "Entryway"
+    },
+    {
+      "taskname": "Mop Floor",
+      "location": "Bathroom"
+    },
+    {
+      "taskname": "Fold Laundry",
+      "location": "Laundry Room"
+    },
+    {
+      "taskname": "Dust Ceiling Fan",
+      "location": "Living Room"
+    },
+    {
+      "taskname": "Vacuum Carpet",
+      "location": "Bedroom"
+    },
+    {
+      "taskname": "Clean Windows",
+      "location": "Dining Room"
+    },
+    {
+      "taskname": "Wash Dishes",
+      "location": "Kitchen"
+    }
+  ]
+  

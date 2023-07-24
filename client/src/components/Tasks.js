@@ -3,21 +3,27 @@ import Auth from "../utils/auth";
 import TaskList from "./TaskList";
 import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
-import { CREATE_TASK } from "../utils/mutations";
+import { CREATE_TASK,DELETE_TASK } from "../utils/mutations";
 import { QUERY_ALL_TASKS } from "../utils/queries";
-import cardBackgroundImage from '../assets/depositphotos_38252213-stock-photo-gold-leaf-on-buddha-sculpture.jpg';
 
-const Tasks = () => {
-  const [formState, setFormState] = useState({ taskname: "", location: "" ,tasks:[]});
+import cardBackgroundImage from '../assets/depositphotos_38252213-stock-photo-gold-leaf-on-buddha-sculpture.jpg';
+import TaskForm from "./TaskForm";
+
+const Tasks = (props) => {
+  const [formState, setFormState] = useState({ taskname: "", location: ""});
+  const [listState, setListState] = useState([...props.tasks]);
 
   const { loading, err, data } = useQuery(QUERY_ALL_TASKS);
   const [createTask, { error }] = useMutation(CREATE_TASK);
+  const [deleteTask, {delErr}] = useMutation(DELETE_TASK);
   const token = Auth.loggedIn() ? Auth.getToken() : null;
-
+  const authContext = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
   const tasksStyle = {
       backgroundImage: `url(${cardBackgroundImage})`,
       padding: '20px',
-      marginTop: '40px',
+      // marginTop: '40px',
       boxShadow: '1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3)',
       color: 'white',
       fontWeight: '800',
@@ -36,7 +42,7 @@ const Tasks = () => {
     };
 
     const inputBox = {
-      width: '650px',
+      // width: '650px',
       padding: '5px',
       margin: '5px',
       textAlign: 'left',
@@ -50,26 +56,41 @@ const Tasks = () => {
       border: '1px solid #ccc',
       lineHeight: '1.5em'
     };
+    const removeTask = async (id) => {
+      const updatedTasks = [...listState].filter((task) => task._id !== id);
+      try {
+        const deletedTask = await deleteTask({
+          variables: { deleteTaskId:id },
+          context: authContext,
+        });
+        console.log(deletedTask);
+      } catch (error) {
+        
+      }
+      setListState(updatedTasks);
+    };
+    const addTask = (task)=>{
+      const newTaskList = [...listState,task];
+      setListState(newTaskList);
+    }
 
-  const authContext = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
+  
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
       const task = await createTask({
-        variables: { taskname:formState.taskname, location: "Location" },
+        variables: { taskname:formState.taskname, location: formState.location },
         context: authContext,
       });
-      // setTaskList([...tasksList,[task.data.createTask]]);
-      console.log(task.data.createTask);
-      console.log(formState);
-      setFormState({...formState,tasks:[task.data.createTask],});
-      window.location.reload(); // reload the page
+
+      //setFormState({...formState,taskname:'',location:''});
+      setListState([...listState,task.data.createTask]);
+     
     } catch (e) {
       console.log(e);
     }
   };
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -86,6 +107,7 @@ const Tasks = () => {
           <form>
             <label htmlFor="taskname">Email address:</label>
             <input placeholder="enter task" id="taskname" type="taskname" name="taskname" onChange={handleChange} ></input>
+            <input style={inputBox} placeholder="enter location" onChange={handleChange} id="location" name="location"></input>
             <button style={submitButtonStyles} type="submit" onClick={handleFormSubmit}>
               add
             </button>
@@ -95,8 +117,19 @@ const Tasks = () => {
       </div>
     );
   } else{
+
+    // try {
+    // return(
+    //  <>
+    //  <TaskForm onSubmit={addTask} />
+    //  <TaskList results={listState} removeTask={removeTask} />
+    //  </>);
+    // } catch (error) {
+      
+    // }
+
     try {
-      const { getAllTasks } = data;
+      // const { getAllTasks } = data;
       // setFormState({...formState,tasks:{getAllTasks},});
     
       return (
@@ -104,15 +137,16 @@ const Tasks = () => {
           <div className="header">
             <form>
               <input style={inputBox} placeholder="enter task" onChange={handleChange} name="taskname"></input>
+              <input style={inputBox} placeholder="enter location" onChange={handleChange} name="location"></input>
               <button style={submitButtonStyles} onClick={handleFormSubmit}>
                 add
               </button>
             </form>
           </div>
           <div className="content" style={taskInput}>
-          <ul style={{ listStyle:'none'}}
-        className="list-group">
-            <TaskList results={getAllTasks} />
+          <ul style={{ listStyle:'none', paddingInlineStart:'0'}}
+        >
+            <TaskList results={listState} removeTask={removeTask} />
             </ul>
           </div>
         </div>

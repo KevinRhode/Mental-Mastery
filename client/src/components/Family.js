@@ -2,21 +2,26 @@ import React, { useState } from "react";
 import Auth from "../utils/auth";
 import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_FAMILY_USER } from "../utils/mutations";
-import { QUERY_ME } from "../utils/queries"
+import { QUERY_ME } from "../utils/queries";
 import goldLeafImage from "../assets/depositphotos_38252213-stock-photo-gold-leaf-on-buddha-sculpture.jpg";
 import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router";
 
 const FamilyComponent = () => {
+  const navigate = useNavigate();
   const [numberOfPeople, setNumberOfPeople] = useState(0);
   const [familyData, setFamilyData] = useState([]);
   const [createFamilyUser, { error }] = useMutation(CREATE_FAMILY_USER);
-  const {loading, err, data}= useQuery(QUERY_ME);
+  const { loading, err, data } = useQuery(QUERY_ME);
   const token = Auth.loggedIn() ? Auth.getToken() : null;
 
   const [showModal, setShowModal] = useState(false);
 
   const handleModalClose = () => {
     setShowModal(false);
+
+    // refresh
+    navigate(0);
   };
 
   const handleInputChange = (event) => {
@@ -40,8 +45,13 @@ const FamilyComponent = () => {
     try {
       await Promise.all(
         familyData.map(async (personData) => {
-          const { id, name, dateOfBirth, proNoun, religiousPreference:religion } =
-            personData;
+          const {
+            id,
+            name,
+            dateOfBirth,
+            proNoun,
+            religiousPreference: religion,
+          } = personData;
 
           // Call the createFamilyUser mutation for each person in the family
           const response = await createFamilyUser({
@@ -135,10 +145,10 @@ const FamilyComponent = () => {
     float: "right",
   };
 
-  const backgroundBlur ={
-    filter:' blur(15px)',
-    zIndex: '-1',
-  }
+  const backgroundBlur = {
+    filter: " blur(15px)",
+    zIndex: "-1",
+  };
 
   const renderCards = () => {
     const cards = [];
@@ -153,7 +163,10 @@ const FamilyComponent = () => {
       };
       cards.push(
         <div key={i} style={cardStyles}>
-          <h3 style={{ color: "#02151d", backgroundColor: "#ffffffCC" }}    className="backgroundBlur">
+          <h3
+            style={{ color: "#02151d", backgroundColor: "#ffffffCC" }}
+            className="backgroundBlur"
+          >
             Person {i + 1}
           </h3>
           <label style={labelStyles}>
@@ -203,23 +216,15 @@ const FamilyComponent = () => {
     ...goldLeafImageStyles,
   };
   if (loading) {
-    return(
-    <>
-    Checking Family
-    </>)
-
+    return <>Checking Family</>;
   }
   try {
-    const {me}= data;
+    const { me } = data;
     console.log(me);
-    if(me.familyUsers.length > 0){
-        return(<>You have created some family users.</>)
+    if (me.familyUsers.length > 0) {
+      return <>You have created some family users.</>;
     }
-  } catch (error) {
-    
-  }
-
-
+  } catch (error) {}
 
   return (
     <div style={containerStyles}>

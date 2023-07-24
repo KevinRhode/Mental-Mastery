@@ -82,7 +82,7 @@ function Login(props) {
       <style jsx>{`
        .login-background {
         position: relative;
-        min-height: 100vh;
+        
         display: flex;
         justify-content: center;
         align-items: center;
@@ -102,7 +102,7 @@ function Login(props) {
         }
   .login-background {
     position: relative;
-    min-height: 100vh;
+    
     display: flex;
     justify-content: center;
   
