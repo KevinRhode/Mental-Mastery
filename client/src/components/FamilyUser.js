@@ -17,7 +17,13 @@ function FamilyUserComponent() {
         boxShadow: '1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3)',
         color: '#02151d',
         fontWeight: '800',
-        textShadow: '0 0 8px rgba(0,0,100, 100)'}
+        // textShadow: '0 0 8px rgba(0,0,100, 100)'
+    }
+        const whiteBG = {
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            
+            
+        }
     const { id } = useParams();
     const { loading, data } = useQuery(GET_FAMILY_USER, {
         variables: { getFamilyUserById: id },
@@ -44,8 +50,8 @@ function FamilyUserComponent() {
                 <div className="container my-1">
                     <div className="card" style={card}>
                         {familyUser && (
-                            <>
-                                <h3>Family User Information</h3>
+                            <div style={whiteBG}>
+                                <h3 style={{textShadow: '1px 3px 4px rgba(0,0,80, 100)'}}>Family User Information</h3>
                                 <ul className="list-group">
                                     <li className="list-group-item">
                                         <p>
@@ -68,7 +74,7 @@ function FamilyUserComponent() {
                                         </p>
                                     </li>
                                 </ul>
-                            </>
+                            </div>
                         )}
                     </div>
                 </div>
