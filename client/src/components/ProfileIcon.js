@@ -7,7 +7,7 @@ import logo from '../assets/profile-circle-svgrepo-com.svg';
     const tinyLogo={
       width: 50,
       height: 50,
-      backgroundColor:'#FFF',
+      backgroundColor:'#DDB047',
       cursor:'pointer',
       borderRadius: '1rem'
     };

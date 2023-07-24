@@ -136,8 +136,14 @@ const resolvers = {
      
     },
     // deleteFamily: async (parent, { username, email }) => {},
-    deleteTask: async (parent, { _id },context) => {
+    deleteTask: async (parent, { id },context) => {
       if (context.user) {
+        try {
+          const deletedTask = await Task.deleteOne({_id:id})
+          return deletedTask;
+        } catch (error) {
+          return "Error Deleting Task"
+        }
         
       }
       throw new AuthenticationError("You need to be logged in!");

@@ -94,3 +94,13 @@ export const UPDATE_FAMILY_USER = gql`
     }
   }
 `;
+
+export const DELETE_TASK = gql`
+mutation DeleteTask($deleteTaskId: ID!) {
+  deleteTask(id: $deleteTaskId) {
+    _id
+    date
+    location
+    taskname
+  }
+}`;

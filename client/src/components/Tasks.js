@@ -3,8 +3,9 @@ import Auth from "../utils/auth";
 import TaskList from "./TaskList";
 import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
-import { CREATE_TASK } from "../utils/mutations";
+import { CREATE_TASK,DELETE_TASK } from "../utils/mutations";
 import { QUERY_ALL_TASKS } from "../utils/queries";
+
 import cardBackgroundImage from '../assets/depositphotos_38252213-stock-photo-gold-leaf-on-buddha-sculpture.jpg';
 import TaskForm from "./TaskForm";
 
@@ -14,8 +15,11 @@ const Tasks = (props) => {
 
   const { loading, err, data } = useQuery(QUERY_ALL_TASKS);
   const [createTask, { error }] = useMutation(CREATE_TASK);
+  const [deleteTask, {delErr}] = useMutation(DELETE_TASK);
   const token = Auth.loggedIn() ? Auth.getToken() : null;
-
+  const authContext = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
   const tasksStyle = {
       backgroundImage: `url(${cardBackgroundImage})`,
       padding: '20px',
@@ -52,9 +56,17 @@ const Tasks = (props) => {
       border: '1px solid #ccc',
       lineHeight: '1.5em'
     };
-    const removeTask = (id) => {
+    const removeTask = async (id) => {
       const updatedTasks = [...listState].filter((task) => task._id !== id);
-  
+      try {
+        const deletedTask = await deleteTask({
+          variables: { deleteTaskId:id },
+          context: authContext,
+        });
+        console.log(deletedTask);
+      } catch (error) {
+        
+      }
       setListState(updatedTasks);
     };
     const addTask = (task)=>{
@@ -62,9 +74,7 @@ const Tasks = (props) => {
       setListState(newTaskList);
     }
 
-  const authContext = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
+  
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -73,7 +83,7 @@ const Tasks = (props) => {
         context: authContext,
       });
 
-      setFormState({...formState,taskname:'',location:''});
+      //setFormState({...formState,taskname:'',location:''});
       setListState([...listState,task.data.createTask]);
      
     } catch (e) {
