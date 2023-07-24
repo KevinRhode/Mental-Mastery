@@ -100,7 +100,7 @@ function Signup(props) {
       <style jsx>{`
         .login-background {
           position: relative;
-          min-height: 100vh;
+          
           display: flex;
           justify-content: center;
           align-items: center;
