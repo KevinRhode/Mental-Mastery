@@ -9,12 +9,10 @@ function TaskList(props) {
           <>
           
             {props.results.map((result) => (
-                <li className="list-group-item"
+                <li 
                 key={result.id}>
                     {/* {result._id}. */}
-                    {result.taskname},
-                    {result.location},
-                    {result.date}
+                    {result.taskname}, {result.location}, {result.date} 
                 </li>
 
             ))}

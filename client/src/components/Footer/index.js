@@ -1,25 +1,33 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import auth from '../../utils/auth';
 
 const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const footerStyles = {
-    color: '#DDB047 !important', 
+  const navButtonStyle = {
+    margin: "0 8px",
+    padding: "10px 20px",
+    color: "white",
+    textDecoration: "none",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    borderRadius: "4px",
+    display: 'flex',
+    justifyContent:'center',
+    maxWidth:'400px',
+    margin:"auto"
+
+
     
   };
 
   return (
-    <footer className="w-100 mt-auto bg-secondary p-4">
-      <div className="container text-center mb-5">
+    <footer className="w-100 p-4">
+      <div className="container text-center">
         {location.pathname !== '/' && (
-          <button
-            className="btn btn-dark mb-3"
-            onClick={() => navigate(-1)}
-          >
-            &larr; Go Back
-          </button>
+          <Link style={navButtonStyle} onClick={() => navigate(-1)}> Go Back </Link>         // <button
+            
         )}
         <h4>
           Made with{' '}

@@ -17,7 +17,7 @@ const Tasks = () => {
   const tasksStyle = {
       backgroundImage: `url(${cardBackgroundImage})`,
       padding: '20px',
-      marginTop: '40px',
+      // marginTop: '40px',
       boxShadow: '1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3)',
       color: 'white',
       fontWeight: '800',
@@ -36,7 +36,7 @@ const Tasks = () => {
     };
 
     const inputBox = {
-      width: '650px',
+      // width: '650px',
       padding: '5px',
       margin: '5px',
       textAlign: 'left',
@@ -110,8 +110,8 @@ const Tasks = () => {
             </form>
           </div>
           <div className="content" style={taskInput}>
-          <ul style={{ listStyle:'none'}}
-        className="list-group">
+          <ul style={{ listStyle:'none', paddingInlineStart:'0'}}
+        >
             <TaskList results={getAllTasks} />
             </ul>
           </div>

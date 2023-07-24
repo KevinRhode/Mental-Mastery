@@ -18,13 +18,16 @@ const Dashboard = () => {
     console.log(data);
     console.log(data.me.familyUsers);
     
-  return <>
+  return <div style={{display:'flex',flexDirection:'column' }}>
+    <div style={{display:'flex'}}>
   {data.me.familyUsers.map((familyuser)=>(
     <ProfileIcon key={familyuser._id} props={familyuser}/>
-  ))}
-  
+  ))}</div>
+  <div>
   <Task/>
-  </>;
+  </div>
+  
+  </div>;
 };
 
 export default Dashboard;
