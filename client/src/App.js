@@ -91,8 +91,9 @@ function App() {
   };
 
   return (
-    <div style={appStyles}>
+    
       <ApolloProvider client={client}>
+        <div style={appStyles}>
         <Header /> {/* Render the Header component here */}
         <Nav/>
         {/* <div style={headerStyles}> */}
@@ -134,8 +135,9 @@ function App() {
           </Routes>
         </div>
         <Footer />
+        </div>
       </ApolloProvider>
-    </div>
+    
   );
 }
 
