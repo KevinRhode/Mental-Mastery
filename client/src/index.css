@@ -1342,6 +1342,12 @@ label form [type='radio'] {
 footer {
   margin: auto;
 }
+header{
+  opacity: 1;
+  filter: drop-shadow(0px 2px 14px #FFF);
+}
+
+
 /* col-sm */
 @media screen and (min-width: 640px) {
   /* .col-sm-auto {

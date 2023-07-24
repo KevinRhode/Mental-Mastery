@@ -25,7 +25,7 @@ const Header = () => {
     backgroundPosition: "center center",
     // marginLeft: "75px",
     marginTop: "20px",
-    minHeight: "140px", 
+    minHeight: "150px", 
     backgroundColor: "rgba(0, 0, 0, 0) !important",
     // maxWidth:'700px',
 
