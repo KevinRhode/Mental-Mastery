@@ -120,6 +120,9 @@ The following images demonstrates the application's appearance:
 7. In the family size tab the user can add the count of family. where he can allow to add personal information of each family user.
 ![Website](./client/src/assets/Screenshot7.png)
 
+8. Family user information is add successfully
+
+![Website](./client/src/assets/Screenshot8.png)
 
 ## Testing
 
