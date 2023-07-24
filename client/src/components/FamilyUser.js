@@ -1,35 +1,48 @@
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
-import { GET_FAMILY_USER } from '../utils/queries';
+import { GET_FAMILY_USER,QUERY_ALL_TASKS } from '../utils/queries';
 import Tasks from './Tasks';
 
 
 import cardBackgroundImage from '../assets/depositphotos_38252213-stock-photo-gold-leaf-on-buddha-sculpture.jpg';
 
 function FamilyUserComponent() {
+    const card = {
+        backgroundImage: `url(${cardBackgroundImage})`,
+        borderRadius: '10px',
+        topMargin: '40px',
+        padding: '20px',
+        boxShadow: '1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3)',
+        color: '#02151d',
+        fontWeight: '800',
+        textShadow: '0 0 8px rgba(0,0,100, 100)'}
     const { id } = useParams();
     const { loading, data } = useQuery(GET_FAMILY_USER, {
         variables: { getFamilyUserById: id },
     });
+    const { loading: taskloading, err, data:taskData } = useQuery(QUERY_ALL_TASKS);
+
 
     const familyUser = data?.getFamilyUserById || {};
 
     if (loading) {
         return <p>Loading User information...</p>;
     }
+    if (taskloading){
+        return (<p>Loading Task Information...</p>);
+    }
 
     return (
         <div>
             <div>
-                <Tasks />
+                {taskData && (<Tasks tasks={taskData.getAllTasks} />)}
             </div>
             <div className="login-background">
                 <div className="background-blur" />
                 <div className="container my-1">
-                    <div className="card">
+                    <div className="card" style={card}>
                         {familyUser && (
                             <>
                                 <h3>Family User Information</h3>
@@ -60,24 +73,7 @@ function FamilyUserComponent() {
                     </div>
                 </div>
             </div>
-            <style jsx>{
-                `
-                .card {
-                    background-image: url(${cardBackgroundImage});
-                    border-radius: 10px;
-                    top margin: 40px;
-                    padding: 20px;
-                    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.3);
-                    color: #02151d;
-                    font-weight: 800;
-                    text-shadow: 0 0 8px rgba(0,0,100, 100);
-                    
-            }
-                
-                `
-            }
-
-            </style>
+           
 
         </div>
     );
