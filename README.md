@@ -95,6 +95,32 @@ Data Manipulation: Mental Mastery supports queries and mutations to retrieve, ad
 Responsive UI: The application features a polished and responsive user interface, ensuring a seamless experience across different devices and screen sizes.
 
 
+## Assets:-
+
+The following images demonstrates the application's appearance:
+
+1. The landing page of Mental Mastery web application
+![Website](./client/src/assets/Screenshot1.png)
+
+2. The signup page of Mental Mastery web application
+![Website](./client/src/assets/Screenshot2.png)
+
+3. The login page of Mental Mastery web application
+![Website](./client/src/assets/Screenshot3.png)
+
+4. If the user filled the wrong credentials. Then the validation message is displayed.
+![Website](./client/src/assets/Screenshot4.png)
+
+5. The home page of Mental Mastery web application
+![Website](./client/src/assets/Screenshot5.png)
+
+6. The dashboard page of Mental Mastery web application. Where the familyuser can list the tasks. if the user click on profile picture of family user. Then each user personal information is also displayed in this tab. 
+![Website](./client/src/assets/Screenshot6.png)
+
+7. In the family size tab the user can add the count of family. where he can allow to add personal information of each family user.
+![Website](./client/src/assets/Screenshot7.png)
+
+
 ## Testing
 
 1. Stop server by using command "ctrl c"
