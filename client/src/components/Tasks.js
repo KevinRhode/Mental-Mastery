@@ -58,7 +58,7 @@ const Tasks = () => {
     event.preventDefault();
     try {
       const task = await createTask({
-        variables: { taskname:formState.taskname, location: "Location" },
+        variables: { taskname:formState.taskname, location: formState.location },
         context: authContext,
       });
       // setTaskList([...tasksList,[task.data.createTask]]);
@@ -86,6 +86,7 @@ const Tasks = () => {
           <form>
             <label htmlFor="taskname">Email address:</label>
             <input placeholder="enter task" id="taskname" type="taskname" name="taskname" onChange={handleChange} ></input>
+            <input style={inputBox} placeholder="enter location" onChange={handleChange} name="location"></input>
             <button style={submitButtonStyles} type="submit" onClick={handleFormSubmit}>
               add
             </button>
@@ -104,6 +105,7 @@ const Tasks = () => {
           <div className="header">
             <form>
               <input style={inputBox} placeholder="enter task" onChange={handleChange} name="taskname"></input>
+              <input style={inputBox} placeholder="enter location" onChange={handleChange} name="location"></input>
               <button style={submitButtonStyles} onClick={handleFormSubmit}>
                 add
               </button>
