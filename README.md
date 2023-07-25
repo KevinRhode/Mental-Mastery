@@ -82,6 +82,10 @@ The following images demonstrates the application's appearance:
 
 ![Website](./client/src/assets/Screenshot8.png)
 
+## Credits
+
+[Adding Webbook, from PWA Text](https://stackoverflow.com/questions/65396446/how-to-add-workbox-to-react-post-update)
+
 ## Testing
 
 1. Stop server by using command "ctrl c"
