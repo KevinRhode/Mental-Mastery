@@ -15,7 +15,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Tasks from './components/Tasks';
 import TaskDash from './components/testDash';
-import project3background from './assets/Project3Background.svg';
+import project3background from './assets/ori_52043_51102fd328b18d2ccf3aaa0dd7232590303d15fe_golden-clock-on-turquoise-background-steampunk.jpg';
 import Footer from './components/Footer/index';
 import Nav from './components/Nav'
 
