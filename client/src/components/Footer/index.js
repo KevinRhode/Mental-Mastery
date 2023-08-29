@@ -17,8 +17,6 @@ const Footer = () => {
     justifyContent:'center',
     maxWidth:'400px',
     margin:"auto"
-
-
     
   };
 
